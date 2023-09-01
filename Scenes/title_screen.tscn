@@ -1,0 +1,42 @@
+[gd_scene format=2]
+
+[node name="TitleScreen" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+margin_top = 24.0
+margin_bottom = 38.0
+text = "Pumpkin Throw 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 960.0
+margin_bottom = 640.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control/Panel"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 768.0
+margin_bottom = 128.0
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
