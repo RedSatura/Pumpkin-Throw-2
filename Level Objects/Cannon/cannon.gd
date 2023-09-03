@@ -13,8 +13,7 @@ func _unhandled_input(_event):
 			pumpkin.initial_force = force
 			pumpkin.global_position = pumpkin_spawner.global_position
 			pumpkin.cannon_angle = angle * -1
-			print(angle)
-			get_tree().get_root().add_child(pumpkin)
+			get_parent().add_child(pumpkin)
 			cannon_disabled = true
 
 func _physics_process(_delta):

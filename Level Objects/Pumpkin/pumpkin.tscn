@@ -18,7 +18,3 @@ polygon = PoolVector2Array( -39.3846, -48, -39.3846, -12, -39.3846, 48, 39.3846,
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_bottom = 600

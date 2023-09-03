@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/level/UI/Play Button/play_button.gd" type="Script" id=1]
 
 [node name="TitleScreen" type="Node"]
 
@@ -37,6 +39,9 @@ margin_top = 64.0
 margin_right = 768.0
 margin_bottom = 128.0
 text = "Play"
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_PlayButton_pressed"]
