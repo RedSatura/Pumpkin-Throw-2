@@ -9,11 +9,17 @@ var cannon_angle = 0
 
 var rand_rotation_value = 0
 
+var dash_enabled = true
+
+onready var dash_cooldown = $DashCooldown
+onready var dash_duration = $DashDuration
+
 func _ready():
 	randomize()
 	rand_rotation_value = rand_range(-10, 10)
 	velocity.y = -initial_force * sin(cannon_angle)
 	velocity.x = initial_force * cos(cannon_angle)
+	LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
 
 func _physics_process(delta):
 	self.rotation_degrees += rand_rotation_value
@@ -26,3 +32,18 @@ func _physics_process(delta):
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
 	if self.global_position.y > 700:
 		queue_free()
+		
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("dash") && dash_enabled:
+		velocity.x += 500
+		dash_enabled = false
+		dash_duration.start()
+		dash_cooldown.start()
+		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
+
+func _on_DashCooldown_timeout():
+	dash_enabled = true
+	LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
+
+func _on_DashDuration_timeout():
+	velocity.x -= 500

@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Pumpkin Throw 2"
-run/main_scene="res://Scenes/title_screen.tscn"
+run/main_scene="res://Scenes/Title Screen/title_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -40,6 +40,11 @@ cannon_fire={
 restart={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+dash={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

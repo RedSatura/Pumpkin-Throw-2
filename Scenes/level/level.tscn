@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Level Objects/UI/Distance Label/distance_label.gd" type="Script" id=1]
 [ext_resource path="res://Level Objects/Cannon/cannon.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/level/level.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/level/UI/Dash Button/dash_button.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/level/UI/UI.gd" type="Script" id=5]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 3 )
@@ -31,14 +33,15 @@ editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DistanceLabel" type="Label" parent="CanvasLayer/Control"]
+[node name="DistanceLabel" type="Label" parent="CanvasLayer/UI"]
 margin_right = 256.0
 margin_bottom = 64.0
 text = "Distance: 0m"
@@ -49,16 +52,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="DashButton" type="TextureButton" parent="CanvasLayer/UI"]
 margin_left = 912.0
 margin_top = 480.0
 margin_right = 1008.0
 margin_bottom = 576.0
 rect_min_size = Vector2( 96, 96 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/Control/TextureButton"]
-color = Color( 0.494118, 0.227451, 0.227451, 1 )
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/DashButton"]
+color = Color( 1, 0.235294, 0.235294, 1 )
 polygon = PoolVector2Array( 0, 0, 0, 96, 96, 96, 96, 0 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 96, 416 )
