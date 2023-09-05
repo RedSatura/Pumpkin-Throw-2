@@ -38,8 +38,24 @@ margin_left = 128.0
 margin_top = 64.0
 margin_right = 768.0
 margin_bottom = 128.0
+focus_mode = 0
 text = "Play"
+flat = true
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopButton" type="Button" parent="CanvasLayer/Control/Panel"]
+anchor_right = 0.007
+anchor_bottom = 0.028
+margin_left = 128.0
+margin_top = 160.0
+margin_right = 761.728
+margin_bottom = 207.872
+focus_mode = 0
+text = "Shop"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

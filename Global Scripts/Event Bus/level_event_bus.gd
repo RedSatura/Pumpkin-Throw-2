@@ -1,6 +1,8 @@
 extends Node
 
 signal get_cannon_power
+signal set_cannon_status
+signal set_power_bar_status
 
 signal get_pumpkin_position
 signal get_current_pumpkin_distance

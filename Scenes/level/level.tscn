@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Level Objects/UI/Distance Label/distance_label.gd" type="Script" id=1]
 [ext_resource path="res://Level Objects/Cannon/cannon.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/level/level.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/level/UI/Dash Button/dash_button.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/level/UI/UI.gd" type="Script" id=5]
+[ext_resource path="res://Level Objects/Cannon/Power Bar/power_bar_progress.png" type="Texture" id=5]
+[ext_resource path="res://Level Objects/Cannon/Power Bar/power_bar_over.png" type="Texture" id=6]
+[ext_resource path="res://Level Objects/Cannon/Power Bar/power_bar.gd" type="Script" id=7]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 3 )
@@ -19,7 +21,7 @@ script = ExtResource( 2 )
 position = Vector2( 128, 32 )
 z_index = 1
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="CannonBase" type="Polygon2D" parent="."]
 position = Vector2( 64, 512 )
 color = Color( 0.231373, 0.223529, 0.203922, 1 )
 polygon = PoolVector2Array( 64, 0, 0, 0, -64, 0, -64, 88, 64, 88 )
@@ -33,15 +35,7 @@ editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DistanceLabel" type="Label" parent="CanvasLayer/UI"]
+[node name="DistanceLabel" type="Label" parent="CanvasLayer"]
 margin_right = 256.0
 margin_bottom = 64.0
 text = "Distance: 0m"
@@ -52,7 +46,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DashButton" type="TextureButton" parent="CanvasLayer/UI"]
+[node name="DashButton" type="TextureButton" parent="CanvasLayer"]
 margin_left = 912.0
 margin_top = 480.0
 margin_right = 1008.0
@@ -63,9 +57,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UI/DashButton"]
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/DashButton"]
 color = Color( 1, 0.235294, 0.235294, 1 )
 polygon = PoolVector2Array( 0, 0, 0, 96, 96, 96, 96, 0 )
+
+[node name="PowerBar" type="TextureProgress" parent="CanvasLayer"]
+margin_left = 16.0
+margin_top = 240.0
+margin_right = 48.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 32, 256 )
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 96, 416 )

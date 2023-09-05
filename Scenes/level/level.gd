@@ -7,7 +7,7 @@ var bouncepad_number = 10
 func _ready():
 	LevelEventBus.connect("get_pumpkin_position", self, "update_camera_position")
 	LevelEventBus.connect("get_current_pumpkin_distance", self, "spawn_bouncepad")
-	for x in 10:
+	for x in bouncepad_number:
 		create_bouncepad(x)
 
 func _unhandled_input(event):
@@ -24,6 +24,6 @@ func create_bouncepad(times_created):
 	add_child(bouncepad)
 
 func spawn_bouncepad(pos):
-	if pos > 5000 + (bouncepad_number - 10) * 500:
+	if pos > bouncepad_number * 500 - 5000:
 		create_bouncepad(bouncepad_number)
 		bouncepad_number += 1

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const gravity = 150
+const gravity = 250
 
 var velocity = Vector2(0, 0)
 var weight = 0
