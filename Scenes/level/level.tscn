@@ -1,21 +1,24 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Level Objects/UI/Distance Label/distance_label.gd" type="Script" id=1]
-[ext_resource path="res://Level Objects/Cannon/cannon.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/level/level.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/level/UI/Dash Button/dash_button.gd" type="Script" id=4]
-[ext_resource path="res://Level Objects/Cannon/Power Bar/power_bar_progress.png" type="Texture" id=5]
-[ext_resource path="res://Level Objects/Cannon/Power Bar/power_bar_over.png" type="Texture" id=6]
-[ext_resource path="res://Level Objects/Cannon/Power Bar/power_bar.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Level/UI/Dash Button/dash_button.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Level/Level Objects/UI/Distance Label/distance_label.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Level/Level Objects/Cannon/Power Bar/power_bar_progress.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Level/Level Objects/Cannon/Power Bar/power_bar_over.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Level/UI/GameOverScreen/game_over_stats.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Level/UI/GameOverScreen/game_over_screen.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Level/Level Objects/Cannon/Power Bar/power_bar.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Title Screen/Play Button/play_button.gd" type="Script" id=10]
 
 [node name="Level" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="Cannon" type="Polygon2D" parent="."]
 position = Vector2( 64, 512 )
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -64, 0, -64, 64, 0, 64, 192, 64, 192, 0 )
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [node name="PumpkinSpawner" type="Position2D" parent="Cannon"]
 position = Vector2( 128, 32 )
@@ -41,7 +44,7 @@ margin_bottom = 64.0
 text = "Distance: 0m"
 align = 1
 valign = 1
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,7 +55,7 @@ margin_top = 480.0
 margin_right = 1008.0
 margin_bottom = 576.0
 rect_min_size = Vector2( 96, 96 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,10 +73,77 @@ rect_min_size = Vector2( 32, 256 )
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 5 )
 fill_mode = 3
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverScreen" type="Panel" parent="CanvasLayer"]
+visible = false
+margin_left = 64.0
+margin_top = 40.0
+margin_right = 960.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 896, 528 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverScreen"]
+anchor_right = 1.0
+margin_left = 64.0
+margin_top = 8.0
+margin_right = -64.0
+margin_bottom = 88.0
+text = "Game Over!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverStats" type="Label" parent="CanvasLayer/GameOverScreen"]
+margin_left = 64.0
+margin_top = 88.0
+margin_right = 832.0
+margin_bottom = 344.0
+text = "Distance travelled: 0m"
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 96, 416 )
+[node name="RestartButton" type="Button" parent="CanvasLayer/GameOverScreen"]
+margin_left = 64.0
+margin_top = 408.0
+margin_right = 832.0
+margin_bottom = 472.0
+focus_mode = 0
+text = "Restart"
+flat = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowGameOverScreen" type="Timer" parent="CanvasLayer/GameOverScreen"]
+one_shot = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground"]
+position = Vector2( 0, -900 )
+scale = Vector2( 1, 2.5 )
+color = Color( 0, 0.603922, 0.109804, 1 )
+polygon = PoolVector2Array( 0, 568, 0, 592, 0, 600, 1024, 600, 1024, 568 )
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground2"]
+color = Color( 0.0156863, 0.254902, 0.0705882, 1 )
+polygon = PoolVector2Array( 1024, 600, 1024, 568, 0, 568, 0, 600 )
+
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="CanvasLayer/GameOverScreen/RestartButton" method="_on_RestartButton_pressed"]
+[connection signal="timeout" from="CanvasLayer/GameOverScreen/ShowGameOverScreen" to="CanvasLayer/GameOverScreen" method="_on_ShowGameOverScreen_timeout"]

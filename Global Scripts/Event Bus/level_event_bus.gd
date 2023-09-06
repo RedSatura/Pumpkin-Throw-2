@@ -1,9 +1,11 @@
 extends Node
 
-signal get_cannon_power
 signal set_cannon_status
+signal get_power_bar_value
 signal set_power_bar_status
 
 signal get_pumpkin_position
 signal get_current_pumpkin_distance
 signal check_dash_cooldown
+
+signal show_game_over

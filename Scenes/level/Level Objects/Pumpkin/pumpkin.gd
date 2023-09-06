@@ -16,6 +16,7 @@ onready var dash_duration = $DashDuration
 
 func _ready():
 	randomize()
+	self.z_index = -1
 	rand_rotation_value = rand_range(-10, 10)
 	velocity.y = -initial_force * sin(cannon_angle)
 	velocity.x = initial_force * cos(cannon_angle)
@@ -31,6 +32,7 @@ func _physics_process(delta):
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", self.global_position.x)
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
 	if self.global_position.y > 700:
+		LevelEventBus.emit_signal("show_game_over", 2)
 		queue_free()
 		
 func _unhandled_input(event):

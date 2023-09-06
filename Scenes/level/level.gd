@@ -19,7 +19,7 @@ func update_camera_position(pos):
 	camera.global_position = Vector2(pos.x, pos.y + 350)
 
 func create_bouncepad(times_created):
-	var bouncepad = load("res://Level Objects/Bouncepad/bouncepad.tscn").instance()
+	var bouncepad = load("res://Scenes/Level/Level Objects/Bouncepad/bouncepad.tscn").instance()
 	bouncepad.global_position = Vector2(times_created * 500 + 1000, rand_range(500, 575))
 	add_child(bouncepad)
 

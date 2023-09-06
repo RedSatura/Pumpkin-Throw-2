@@ -12,16 +12,24 @@ func _ready():
 	LevelEventBus.connect("set_power_bar_status", self, "set_power_bar_status")
 	self.value = 0
 	
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("cannon_fire"):
+		match power_bar_status:
+			PowerBarStatus.OFF:
+				pass
+			PowerBarStatus.READY:
+				LevelEventBus.emit_signal("get_power_bar_value", self.value)
+	
 func _physics_process(delta):
 	match power_bar_status:
 		PowerBarStatus.OFF:
 			pass
 		PowerBarStatus.READY:
+			if self.value <= self.min_value:
+				power_step = 1
+			elif self.value >= self.max_value:
+				power_step = -1
 			self.value += power_step
-			if self.value < self.min_value:
-				power_step *= -1
-			elif self.value > self.max_value:
-				power_step *= -1
 
 func set_power_bar_status(status):
 	if status == 0:

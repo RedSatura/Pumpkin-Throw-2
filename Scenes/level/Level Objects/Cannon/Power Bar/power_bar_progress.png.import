@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/power_bar_over.png-e4faa7ac4d22f3550188e759f419a7a5.stex"
+path="res://.import/power_bar_progress.png-cc813211df7ba1d3808166458dc6fd35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level Objects/Cannon/Power Bar/power_bar_over.png"
-dest_files=[ "res://.import/power_bar_over.png-e4faa7ac4d22f3550188e759f419a7a5.stex" ]
+source_file="res://Scenes/Level/Level Objects/Cannon/Power Bar/power_bar_progress.png"
+dest_files=[ "res://.import/power_bar_progress.png-cc813211df7ba1d3808166458dc6fd35.stex" ]
 
 [params]
 

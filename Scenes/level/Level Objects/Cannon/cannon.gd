@@ -13,6 +13,9 @@ var cannon_state = CannonState.AIMING
 var force = 1000
 var angle = 0
 
+func _ready():
+	LevelEventBus.connect("get_power_bar_value", self, "set_cannon_force")
+
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("cannon_fire"):
 		match cannon_state:
@@ -44,9 +47,12 @@ func _physics_process(_delta):
 				LevelEventBus.emit_signal("set_power_bar_status", 1)
 			CannonState.FIRING:
 				LevelEventBus.emit_signal("set_power_bar_status", 0)
-				var pumpkin = load("res://Level Objects/Pumpkin/pumpkin.tscn").instance()
+				var pumpkin = load("res://Scenes/Level/Level Objects/Pumpkin/pumpkin.tscn").instance()
 				pumpkin.initial_force = force
 				pumpkin.global_position = pumpkin_spawner.global_position
 				pumpkin.cannon_angle = angle * -1
 				get_parent().add_child(pumpkin)
 				cannon_state = CannonState.IDLE
+
+func set_cannon_force(cannon_force):
+	force *= (cannon_force * 2) / 200
