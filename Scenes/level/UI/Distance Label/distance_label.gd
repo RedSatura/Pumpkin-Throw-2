@@ -5,4 +5,4 @@ func _ready():
 	self.text = "Distance: 0 m"
 	
 func update_label(distance):
-	self.text = "Distance: " + str(abs((round((distance - 96) / 250)))) + " m"
+	self.text = "Distance: " + str(abs(round((distance - 96) / 250))) + " m"

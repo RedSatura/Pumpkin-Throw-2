@@ -1,4 +1,7 @@
 extends Label
 
 func _ready():
-	pass
+	LevelEventBus.connect("get_current_pumpkin_distance", self, "update_label")
+	
+func update_label(dist):
+	self.text = "Distance Travelled: " + str(abs(round((dist - 96) / 250))) + "m"

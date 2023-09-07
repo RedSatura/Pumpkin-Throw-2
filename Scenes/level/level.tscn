@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Level/UI/Dash Button/dash_button.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Level/Level Objects/UI/Distance Label/distance_label.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Level/UI/Distance Label/distance_label.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/Power Bar/power_bar_progress.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/Power Bar/power_bar_over.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Level/UI/GameOverScreen/game_over_stats.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/Level/UI/GameOverScreen/game_over_screen.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/Power Bar/power_bar.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Title Screen/Play Button/play_button.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Level/grass.png" type="Texture" id=11]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 2 )
@@ -116,9 +117,9 @@ __meta__ = {
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/GameOverScreen"]
 margin_left = 64.0
-margin_top = 408.0
+margin_top = 280.0
 margin_right = 832.0
-margin_bottom = 472.0
+margin_bottom = 344.0
 focus_mode = 0
 text = "Restart"
 flat = true
@@ -127,23 +128,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ShopButton" type="Button" parent="CanvasLayer/GameOverScreen"]
+margin_left = 64.0
+margin_top = 344.0
+margin_right = 832.0
+margin_bottom = 408.0
+focus_mode = 0
+text = "Shop"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/GameOverScreen"]
+margin_left = 64.0
+margin_top = 408.0
+margin_right = 832.0
+margin_bottom = 472.0
+focus_mode = 0
+text = "Back to Menu"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ShowGameOverScreen" type="Timer" parent="CanvasLayer/GameOverScreen"]
 one_shot = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
+[node name="Control" type="Control" parent="."]
+margin_left = 64.0
+margin_top = 456.0
+margin_right = 104.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground"]
-position = Vector2( 0, -900 )
-scale = Vector2( 1, 2.5 )
-color = Color( 0, 0.603922, 0.109804, 1 )
-polygon = PoolVector2Array( 0, 568, 0, 592, 0, 600, 1024, 600, 1024, 568 )
-
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
-
-[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground2"]
-color = Color( 0.0156863, 0.254902, 0.0705882, 1 )
-polygon = PoolVector2Array( 1024, 600, 1024, 568, 0, 568, 0, 600 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512, 568 )
+scale = Vector2( 48, 1 )
+z_index = -2
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1024, 64 )
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="CanvasLayer/GameOverScreen/RestartButton" method="_on_RestartButton_pressed"]
 [connection signal="timeout" from="CanvasLayer/GameOverScreen/ShowGameOverScreen" to="CanvasLayer/GameOverScreen" method="_on_ShowGameOverScreen_timeout"]

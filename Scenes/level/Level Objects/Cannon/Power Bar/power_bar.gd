@@ -9,6 +9,7 @@ var power_bar_status = PowerBarStatus.OFF
 var power_step = 1
 
 func _ready():
+	self.visible = false
 	LevelEventBus.connect("set_power_bar_status", self, "set_power_bar_status")
 	self.value = 0
 	
@@ -23,8 +24,9 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	match power_bar_status:
 		PowerBarStatus.OFF:
-			pass
+			self.visible = false
 		PowerBarStatus.READY:
+			self.visible = true
 			if self.value <= self.min_value:
 				power_step = 1
 			elif self.value >= self.max_value:

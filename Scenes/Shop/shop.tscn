@@ -1,0 +1,86 @@
+[gd_scene format=2]
+
+[node name="Shop" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1008.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 992, 568 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shop" type="Label" parent="Control/Panel"]
+anchor_right = 1.0
+margin_bottom = 64.0
+text = "Shop"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Control/Panel"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 704.0
+margin_bottom = 552.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PumpkinCustom" type="Tabs" parent="Control/Panel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Test" type="Tabs" parent="Control/Panel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 678, 450 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Control/Panel"]
+polygon = PoolVector2Array( 720, 96, 720, 352, 976, 352, 976, 96 )
+
+[node name="Title" type="Label" parent="Control/Panel"]
+margin_left = 720.0
+margin_top = 368.0
+margin_right = 976.0
+margin_bottom = 400.0
+text = "Item Title!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="Control/Panel"]
+margin_left = 720.0
+margin_top = 416.0
+margin_right = 976.0
+margin_bottom = 554.0
+rect_min_size = Vector2( 256, 138 )
+text = "Item Description!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
