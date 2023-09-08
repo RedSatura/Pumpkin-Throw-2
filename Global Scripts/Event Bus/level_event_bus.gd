@@ -7,5 +7,7 @@ signal set_power_bar_status
 signal get_pumpkin_position
 signal get_current_pumpkin_distance
 signal check_dash_cooldown
+signal check_fall_cooldown
 
+signal show_level_uis
 signal show_game_over

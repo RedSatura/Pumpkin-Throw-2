@@ -47,6 +47,7 @@ func _physics_process(_delta):
 				LevelEventBus.emit_signal("set_power_bar_status", 1)
 			CannonState.FIRING:
 				LevelEventBus.emit_signal("set_power_bar_status", 0)
+				LevelEventBus.emit_signal("show_level_uis", true)
 				var pumpkin = load("res://Scenes/Level/Level Objects/Pumpkin/pumpkin.tscn").instance()
 				pumpkin.initial_force = force
 				pumpkin.global_position = pumpkin_spawner.global_position

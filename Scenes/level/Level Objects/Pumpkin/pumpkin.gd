@@ -10,9 +10,11 @@ var cannon_angle = 0
 var rand_rotation_value = 0
 
 var dash_enabled = true
+var fall_enabled = true
 
 onready var dash_cooldown = $DashCooldown
 onready var dash_duration = $DashDuration
+onready var fall_cooldown = $FallCooldown
 
 func _ready():
 	randomize()
@@ -21,6 +23,7 @@ func _ready():
 	velocity.y = -initial_force * sin(cannon_angle)
 	velocity.x = initial_force * cos(cannon_angle)
 	LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
+	LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _physics_process(delta):
 	self.rotation_degrees += rand_rotation_value
@@ -34,6 +37,8 @@ func _physics_process(delta):
 	if self.global_position.y > 700:
 		LevelEventBus.emit_signal("show_game_over", 2)
 		queue_free()
+	if self.global_position.y < -2000:
+		velocity.y = 0
 		
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("dash") && dash_enabled:
@@ -42,6 +47,12 @@ func _unhandled_input(event):
 		dash_duration.start()
 		dash_cooldown.start()
 		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
+		
+	if Input.is_action_just_pressed("fall") && fall_enabled:
+		velocity.y += 500
+		fall_enabled = false
+		fall_cooldown.start()
+		LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _on_DashCooldown_timeout():
 	dash_enabled = true
@@ -49,3 +60,7 @@ func _on_DashCooldown_timeout():
 
 func _on_DashDuration_timeout():
 	velocity.x -= 500
+
+func _on_FallCooldown_timeout():
+	fall_enabled = true
+	LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
