@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
@@ -12,6 +12,12 @@
 [ext_resource path="res://Scenes/Title Screen/Play Button/play_button.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Level/grass.png" type="Texture" id=11]
 [ext_resource path="res://Scenes/Level/UI/Fall Button/fall_button.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Title Screen/Shop Button/shop_button.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/Level/Level Objects/Ground/ground.gd" type="Script" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 98.5, 32 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 2 )
@@ -97,6 +103,7 @@ __meta__ = {
 }
 
 [node name="GameOverScreen" type="Panel" parent="CanvasLayer"]
+visible = false
 margin_left = 64.0
 margin_top = 40.0
 margin_right = 960.0
@@ -104,7 +111,6 @@ margin_bottom = 568.0
 rect_min_size = Vector2( 896, 528 )
 script = ExtResource( 8 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -165,21 +171,18 @@ margin_bottom = 408.0
 focus_mode = 0
 text = "Shop"
 flat = true
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="Button" parent="CanvasLayer/GameOverScreen"]
+[node name="TitleScreenButton" parent="CanvasLayer/GameOverScreen" instance=ExtResource( 13 )]
 margin_left = 64.0
 margin_top = 408.0
 margin_right = 832.0
 margin_bottom = 472.0
-focus_mode = 0
-text = "Back to Menu"
+text = "Back To Menu"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ShowGameOverScreen" type="Timer" parent="CanvasLayer/GameOverScreen"]
 one_shot = true
@@ -193,13 +196,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Control"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Control/ParallaxBackground"]
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
 position = Vector2( 512, 568 )
 scale = Vector2( 48, 1 )
 z_index = -2
 texture = ExtResource( 11 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 1024, 64 )
+region_rect = Rect2( 0, 0, 30, 64 )
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2( 384, 592 )
+scale = Vector2( 48, 1 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+scale = Vector2( 0.0208333, 1 )
+shape = SubResource( 1 )
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="CanvasLayer/GameOverScreen/RestartButton" method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/ShopButton" to="CanvasLayer/GameOverScreen/ShopButton" method="_on_ShopButton_pressed"]
 [connection signal="timeout" from="CanvasLayer/GameOverScreen/ShowGameOverScreen" to="CanvasLayer/GameOverScreen" method="_on_ShowGameOverScreen_timeout"]
