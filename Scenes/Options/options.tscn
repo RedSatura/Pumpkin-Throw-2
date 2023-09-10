@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Options/Inputs/inputs.gd" type="Script" id=2]
+
+[sub_resource type="Theme" id=1]
+Button/colors/font_color_pressed = Color( 1, 0.627451, 0, 1 )
+
+[sub_resource type="Theme" id=2]
+Button/colors/font_color_pressed = Color( 1, 0.627451, 0, 1 )
+
+[sub_resource type="Theme" id=3]
+Button/colors/font_color_pressed = Color( 1, 0.627451, 0, 1 )
 
 [node name="Options" type="Node2D"]
 
@@ -103,8 +113,11 @@ margin_right = 64.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 64, 32 )
 focus_mode = 0
+theme = SubResource( 1 )
+toggle_mode = true
 text = "X"
 flat = true
+script = ExtResource( 2 )
 
 [node name="Dash" type="Button" parent="Control/Panel/Input/VBoxContainer/HBoxContainer2"]
 margin_top = 32.0
@@ -112,8 +125,11 @@ margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 32 )
 focus_mode = 0
+theme = SubResource( 2 )
+toggle_mode = true
 text = "X"
 flat = true
+script = ExtResource( 2 )
 
 [node name="Fall" type="Button" parent="Control/Panel/Input/VBoxContainer/HBoxContainer2"]
 margin_top = 64.0
@@ -121,8 +137,11 @@ margin_right = 64.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 0, 32 )
 focus_mode = 0
+theme = SubResource( 3 )
+toggle_mode = true
 text = "Down"
 flat = true
+script = ExtResource( 2 )
 
 [node name="Audio" type="VBoxContainer" parent="Control/Panel"]
 margin_left = 304.0
@@ -152,3 +171,7 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 80.0
 margin_bottom = 80.0
+
+[connection signal="pressed" from="Control/Panel/Input/VBoxContainer/HBoxContainer2/Fire Cannon" to="Control/Panel/Input/VBoxContainer/HBoxContainer2/Fire Cannon" method="_on_Fire_Cannon_pressed"]
+[connection signal="pressed" from="Control/Panel/Input/VBoxContainer/HBoxContainer2/Dash" to="Control/Panel/Input/VBoxContainer/HBoxContainer2/Dash" method="_on_Dash_pressed"]
+[connection signal="pressed" from="Control/Panel/Input/VBoxContainer/HBoxContainer2/Fall" to="Control/Panel/Input/VBoxContainer/HBoxContainer2/Fall" method="_on_Fall_pressed"]
