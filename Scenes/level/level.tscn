@@ -211,6 +211,7 @@ region_rect = Rect2( 0, 0, 30, 64 )
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 384, 592 )
 scale = Vector2( 48, 1 )
+collision_layer = 2
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true

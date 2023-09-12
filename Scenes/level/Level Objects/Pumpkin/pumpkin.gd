@@ -26,14 +26,22 @@ func _ready():
 	LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _physics_process(delta):
+	print(velocity)
 	self.rotation_degrees += rand_rotation_value
 	velocity.y += gravity * delta
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		velocity = velocity.bounce(collision.normal)
-		rand_rotation_value = rand_range(-10, 10)
+		velocity = velocity.bounce(collision.normal) / 1.2
+		if velocity.x > 10:
+			rand_rotation_value = rand_range(-10, 10)
+		else:
+			rand_rotation_value = 2
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", self.global_position.x)
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
+	
+	if is_on_floor():
+		self.velocity.x -= 1
+	
 	if self.global_position.y > 700:
 		LevelEventBus.emit_signal("show_game_over", 2)
 		queue_free()
