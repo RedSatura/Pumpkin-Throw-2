@@ -11,5 +11,5 @@ func _ready():
 	base.rect_size = Vector2(64, 575 - self.position.y)
 	
 func check_pumpkin_position(pos):
-	if pos > self.global_position.x + 5000:
+	if pos > self.global_position.x + 25000:
 		queue_free()

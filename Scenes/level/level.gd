@@ -2,7 +2,7 @@ extends Node2D
 
 onready var camera = $Camera2D
 
-var bouncepad_number = 10
+var bouncepad_number = 50
 
 func _ready():
 	LevelEventBus.connect("get_pumpkin_position", self, "update_camera_position")
@@ -20,7 +20,7 @@ func update_camera_position(pos):
 
 func create_bouncepad(times_created):
 	var bouncepad = load("res://Scenes/Level/Level Objects/Bouncepad/bouncepad.tscn").instance()
-	bouncepad.global_position = Vector2(times_created * 500 + 1000, rand_range(400, 475))
+	bouncepad.global_position = Vector2(times_created * 500 + 1000, rand_range(325, 400))
 	add_child(bouncepad)
 
 func spawn_bouncepad(pos):

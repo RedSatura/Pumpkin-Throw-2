@@ -12,6 +12,9 @@ var rand_rotation_value = 0
 var dash_enabled = true
 var fall_enabled = true
 
+var dash_times = 0
+var fall_times = 0
+
 onready var dash_cooldown = $DashCooldown
 onready var dash_duration = $DashDuration
 onready var fall_cooldown = $FallCooldown
@@ -26,40 +29,38 @@ func _ready():
 	LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _physics_process(delta):
-	print(velocity)
 	self.rotation_degrees += rand_rotation_value
 	velocity.y += gravity * delta
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		velocity = velocity.bounce(collision.normal) / 1.2
-		if velocity.x > 10:
+		velocity = velocity.bounce(collision.normal) / 1.05
+		if velocity.x >= 10:
 			rand_rotation_value = rand_range(-10, 10)
-		else:
-			rand_rotation_value = 2
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", self.global_position.x)
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
 	
-	if is_on_floor():
-		self.velocity.x -= 1
+	if velocity.length() < 3:
+		print("Not Moving")
 	
 	if self.global_position.y > 700:
 		LevelEventBus.emit_signal("show_game_over", 2)
-		queue_free()
 	if self.global_position.y < -2000:
 		velocity.y = 0
 		
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("dash") && dash_enabled:
 		velocity.x += 500
+		dash_times += 1
 		dash_enabled = false
 		dash_duration.start()
-		dash_cooldown.start()
+		dash_cooldown.start(1 + (dash_times * 0.05))
 		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
 		
 	if Input.is_action_just_pressed("fall") && fall_enabled:
 		velocity.y += 500
+		fall_times += 1
 		fall_enabled = false
-		fall_cooldown.start()
+		fall_cooldown.start(3 + (fall_times * 0.1))
 		LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _on_DashCooldown_timeout():

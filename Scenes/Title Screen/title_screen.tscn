@@ -35,11 +35,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Control/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel"]
 margin_left = 128.0
-margin_top = 64.0
+margin_top = 68.0
 margin_right = 768.0
-margin_bottom = 128.0
+margin_bottom = 404.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+margin_right = 640.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 640, 64 )
 focus_mode = 0
 text = "Play"
 flat = true
@@ -48,13 +57,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShopButton" type="Button" parent="CanvasLayer/Control/Panel"]
-anchor_right = 0.007
-anchor_bottom = 0.028
-margin_left = 128.0
-margin_top = 128.0
-margin_right = 761.728
-margin_bottom = 175.872
+[node name="ShopButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+margin_top = 68.0
+margin_right = 640.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 640, 64 )
 focus_mode = 0
 text = "Shop"
 flat = true
@@ -63,11 +70,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/Control/Panel"]
-margin_left = 128.0
-margin_top = 192.0
-margin_right = 768.0
-margin_bottom = 256.0
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+margin_top = 136.0
+margin_right = 640.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 640, 64 )
 focus_mode = 0
 text = "Options"
 flat = true
@@ -76,11 +83,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel"]
-margin_left = 128.0
-margin_top = 256.0
-margin_right = 768.0
-margin_bottom = 320.0
+[node name="StatsButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+margin_top = 204.0
+margin_right = 640.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 640, 64 )
+text = "Statistics"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+margin_top = 272.0
+margin_right = 640.0
+margin_bottom = 336.0
+rect_min_size = Vector2( 640, 64 )
 focus_mode = 0
 text = "Credits"
 flat = true
@@ -89,7 +107,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/ShopButton" to="CanvasLayer/Control/Panel/ShopButton" method="_on_ShopButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/OptionsButton" to="CanvasLayer/Control/Panel/OptionsButton" method="_on_OptionsButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/CreditsButton" to="CanvasLayer/Control/Panel/CreditsButton" method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/PlayButton" to="CanvasLayer/Control/Panel/VBoxContainer/PlayButton" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/ShopButton" to="CanvasLayer/Control/Panel/VBoxContainer/ShopButton" method="_on_ShopButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/OptionsButton" to="CanvasLayer/Control/Panel/VBoxContainer/OptionsButton" method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/CreditsButton" to="CanvasLayer/Control/Panel/VBoxContainer/CreditsButton" method="_on_CreditsButton_pressed"]

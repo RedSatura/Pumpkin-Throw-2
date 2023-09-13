@@ -6,6 +6,7 @@
 radius = 32.0
 
 [node name="Pumpkin" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 0
 collision_mask = 3
 script = ExtResource( 1 )
@@ -30,6 +31,7 @@ one_shot = true
 
 [node name="FallCooldown" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_DashDuration_timeout"]
