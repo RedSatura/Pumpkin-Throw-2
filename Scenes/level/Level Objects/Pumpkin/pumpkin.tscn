@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Pumpkin/pumpkin.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 38.0
 
 [node name="Pumpkin" type="KinematicBody2D"]
 z_index = 1
@@ -26,13 +29,18 @@ shape = SubResource( 1 )
 wait_time = 2.0
 one_shot = true
 
-[node name="DashDuration" type="Timer" parent="."]
-one_shot = true
-
 [node name="FallCooldown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
+[node name="AreaDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
+shape = SubResource( 2 )
+
 [connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]
-[connection signal="timeout" from="DashDuration" to="." method="_on_DashDuration_timeout"]
 [connection signal="timeout" from="FallCooldown" to="." method="_on_FallCooldown_timeout"]
+[connection signal="area_entered" from="AreaDetector" to="." method="_on_AreaDetector_area_entered"]

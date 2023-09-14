@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Title Screen/Shop Button/shop_button.gd" type="Script" id=14]
 [ext_resource path="res://Scenes/Level/Level Objects/Ground/ground.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Level/Level Objects/Mud/mud.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.5, 32 )
@@ -187,6 +188,9 @@ flat = true
 [node name="ShowGameOverScreen" type="Timer" parent="CanvasLayer/GameOverScreen"]
 one_shot = true
 
+[node name="Mud" parent="CanvasLayer/GameOverScreen" instance=ExtResource( 16 )]
+position = Vector2( 544, 504 )
+
 [node name="Control" type="Control" parent="."]
 margin_left = 64.0
 margin_top = 456.0
@@ -209,7 +213,7 @@ texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 30, 64 )
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2( 384, 592 )
+position = Vector2( 384, 608 )
 scale = Vector2( 48, 1 )
 collision_layer = 2
 collision_mask = 0
