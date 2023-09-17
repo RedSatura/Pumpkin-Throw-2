@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "GameData",
+"language": "GDScript",
+"path": "res://Data/game_data.gd"
+} ]
+_global_script_class_icons={
+"GameData": ""
+}
+
 [application]
 
 config/name="Pumpkin Throw 2"

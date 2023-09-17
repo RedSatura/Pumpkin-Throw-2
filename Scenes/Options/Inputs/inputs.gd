@@ -34,7 +34,6 @@ func _on_Fall_pressed():
 		key_changeable = false
 
 func change_key(new_key):
-	print(action_string)
 	key_changeable = false
 	InputMap.action_erase_events(action_string)
 	InputMap.action_add_event(action_string, new_key)

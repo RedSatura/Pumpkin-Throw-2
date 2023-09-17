@@ -36,10 +36,8 @@ func create_mud(times_created):
 	var mud = load("res://Scenes/Level/Level Objects/Mud/mud.tscn").instance()
 	mud.global_position = Vector2(times_created * 1000 + 1500 + rand_range(-500, 500), 576)
 	add_child(mud)
-	print(mud_number)
 		
 func spawn_mud(pos):
 	if pos > mud_number * 1000 - 5000:
 		create_mud(mud_number)
 		mud_number += 1
-		print("created!")

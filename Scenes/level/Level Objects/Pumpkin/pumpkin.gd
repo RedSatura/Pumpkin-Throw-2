@@ -39,7 +39,7 @@ func _physics_process(delta):
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", self.global_position.x)
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
 	
-	if velocity.length() < 2.5:
+	if velocity.length() < 2.2:
 		dash_enabled = false
 		fall_enabled = false
 		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
