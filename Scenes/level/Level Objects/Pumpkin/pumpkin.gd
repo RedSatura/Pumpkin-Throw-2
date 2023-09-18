@@ -36,7 +36,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.normal) / 1.1
-	LevelEventBus.emit_signal("get_current_pumpkin_distance", self.global_position.x)
+	LevelEventBus.emit_signal("get_current_pumpkin_distance", convert_distance_to_meters(self.global_position.x))
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
 	
 	if velocity.length() < 2.2:
@@ -47,6 +47,7 @@ func _physics_process(delta):
 		if game_active:
 			LevelEventBus.emit_signal("show_level_uis", false)
 			LevelEventBus.emit_signal("show_game_over", 2)
+			save_data()
 			game_active = false
 
 	if self.global_position.y < -2000:
@@ -85,3 +86,19 @@ func _on_FallCooldown_timeout():
 
 func _on_AreaDetector_area_entered(area):
 	velocity /= 1.75
+	
+func save_data():
+	var game_data = GameData.new()
+	if convert_distance_to_meters(self.global_position.x) > game_data.best_distance:
+		game_data.best_distance = convert_distance_to_meters(self.global_position.x)
+		verify_save_existence()
+		ResourceSaver.save("user://Data/game_data.tres", game_data)
+	
+func convert_distance_to_meters(dist):
+	return abs(round((dist - 96) / 250))
+	
+func verify_save_existence():
+	var dir = Directory.new()
+	dir.open("user://")
+	if !dir.dir_exists("Data"):
+		dir.make_dir("Data")

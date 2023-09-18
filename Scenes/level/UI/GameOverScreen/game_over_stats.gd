@@ -4,4 +4,6 @@ func _ready():
 	LevelEventBus.connect("get_current_pumpkin_distance", self, "update_label")
 	
 func update_label(dist):
-	self.text = "Distance Travelled: " + str(abs(round((dist - 96) / 250))) + " meters"
+	var game_data = load("user://Data/game_data.tres") as GameData
+	print(game_data.best_distance)
+	self.text = "Distance Travelled: " + str(dist) + " meters. Your best distance: " + str(game_data.best_distance) + " meters."

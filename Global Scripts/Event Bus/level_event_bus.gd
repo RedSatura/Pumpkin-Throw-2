@@ -11,3 +11,5 @@ signal check_fall_cooldown
 
 signal show_level_uis
 signal show_game_over
+
+signal game_status
