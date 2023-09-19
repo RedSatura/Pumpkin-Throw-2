@@ -5,5 +5,4 @@ func _ready():
 	
 func update_label(dist):
 	var game_data = load("user://Data/game_data.tres") as GameData
-	print(game_data.best_distance)
 	self.text = "Distance Travelled: " + str(dist) + " meters. Your best distance: " + str(game_data.best_distance) + " meters."

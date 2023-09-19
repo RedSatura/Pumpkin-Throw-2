@@ -1,10 +1,13 @@
 extends TextureRect
 
 func _ready():
+	var game_data = load("user://Data/game_data.tres") as GameData
+	if game_data != null:
+		self.set_global_position(Vector2(game_data.best_actual_distance, 0))
 	LevelEventBus.connect("get_pumpkin_position", self, "update_x_position")
 
 func _process(delta):
-	self.rect_position.x = -64
+	pass
 	
 func update_x_position(pos):
 	self.rect_position.y = pos.y - 1000

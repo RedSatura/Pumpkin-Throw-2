@@ -91,11 +91,12 @@ func save_data():
 	var game_data = GameData.new()
 	if convert_distance_to_meters(self.global_position.x) > game_data.best_distance:
 		game_data.best_distance = convert_distance_to_meters(self.global_position.x)
+		game_data.best_actual_distance = self.global_position.x - 96
 		verify_save_existence()
 		ResourceSaver.save("user://Data/game_data.tres", game_data)
 	
 func convert_distance_to_meters(dist):
-	return abs(round((dist - 96) / 250))
+	return round((dist - 96) / 250)
 	
 func verify_save_existence():
 	var dir = Directory.new()

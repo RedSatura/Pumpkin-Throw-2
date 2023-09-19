@@ -2,8 +2,8 @@ extends Node2D
 
 onready var camera = $Camera2D
 
-var bouncepad_number = 50
-var mud_number = 5
+var bouncepad_number = 1
+var mud_number = 1
 
 func _ready():
 	LevelEventBus.connect("get_pumpkin_position", self, "update_camera_position")
@@ -13,6 +13,9 @@ func _ready():
 		create_bouncepad(x)
 	for x in mud_number:
 		create_mud(x)
+		
+func _process(delta):
+	pass
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("restart"):
@@ -28,7 +31,7 @@ func create_bouncepad(times_created):
 	add_child(bouncepad)
 
 func spawn_bouncepad(pos):
-	if pos > bouncepad_number * 500 - 5000:
+	if pos > bouncepad_number * 20 - 5000:
 		create_bouncepad(bouncepad_number)
 		bouncepad_number += 1
 		
@@ -38,6 +41,7 @@ func create_mud(times_created):
 	add_child(mud)
 		
 func spawn_mud(pos):
-	if pos > mud_number * 1000 - 5000:
+	#print(pos, " ", mud_number, " ", mud_number * 1000 - 10000)
+	if pos > mud_number * 10 - 1000:
 		create_mud(mud_number)
 		mud_number += 1
