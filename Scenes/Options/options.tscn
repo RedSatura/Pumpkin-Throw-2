@@ -118,6 +118,7 @@ toggle_mode = true
 text = "X"
 flat = true
 script = ExtResource( 2 )
+button_name = "Fire Cannon"
 
 [node name="Dash" type="Button" parent="Control/Panel/Input/VBoxContainer/HBoxContainer2" groups=["input_button"]]
 margin_top = 32.0
@@ -130,6 +131,7 @@ toggle_mode = true
 text = "X"
 flat = true
 script = ExtResource( 2 )
+button_name = "Dash"
 
 [node name="Fall" type="Button" parent="Control/Panel/Input/VBoxContainer/HBoxContainer2" groups=["input_button"]]
 margin_top = 64.0
@@ -142,6 +144,7 @@ toggle_mode = true
 text = "Down"
 flat = true
 script = ExtResource( 2 )
+button_name = "Fall"
 
 [node name="Audio" type="VBoxContainer" parent="Control/Panel"]
 margin_left = 304.0

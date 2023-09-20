@@ -1,9 +1,11 @@
 extends Label
 
 func _ready():
-	var game_data = load("user://Data/game_data.tres") as GameData
-	self.text = "$" + comma_number(game_data.money)
-
+	LevelEventBus.connect("update_money_received", self, "update_label")
+	
+func update_label(money):
+	self.text = "Money Received: $" + str(comma_number(money))
+	
 func comma_number(num):
 	var comma_num = ""
 	var mod = str(num).length() % 3

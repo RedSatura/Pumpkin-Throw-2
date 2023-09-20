@@ -1,9 +1,20 @@
 extends Button
 
+export var button_name = ""
+
 var key_changeable = false
 var action_string = ""
 
+onready var game_data = load("user://Data/game_data.tres") as GameData
+
 func _ready():
+	match button_name:
+		"Fire Cannon":
+			self.set_text(OS.get_scancode_string(game_data.input_fire_cannon.physical_scancode))
+		"Dash":
+			self.set_text(OS.get_scancode_string(game_data.input_dash.physical_scancode))
+		"Fall":
+			self.set_text(OS.get_scancode_string(game_data.input_fall.physical_scancode))
 	OptionsEventBus.connect("toggle_buttons", self, "toggle_buttons")
 
 func _on_Fire_Cannon_pressed():
@@ -37,6 +48,14 @@ func change_key(new_key):
 	key_changeable = false
 	InputMap.action_erase_events(action_string)
 	InputMap.action_add_event(action_string, new_key)
+	match action_string:
+		"cannon_fire":
+			game_data.input_fire_cannon = new_key
+		"dash":
+			game_data.input_dash = new_key
+		"fall":
+			game_data.input_fall = new_key
+	ResourceSaver.save("user://Data/game_data.tres", game_data)
 	self.set_text(OS.get_scancode_string(new_key.physical_scancode))
 	self.set_pressed(false)
 

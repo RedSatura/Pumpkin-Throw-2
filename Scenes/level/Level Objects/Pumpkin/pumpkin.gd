@@ -17,6 +17,8 @@ var fall_enabled = true
 var dash_times = 0
 var fall_times = 0
 
+onready var game_data = load("user://Data/game_data.tres") as GameData
+
 onready var dash_cooldown = $DashCooldown
 onready var fall_cooldown = $FallCooldown
 
@@ -47,11 +49,12 @@ func _physics_process(delta):
 		if game_active:
 			LevelEventBus.emit_signal("show_level_uis", false)
 			LevelEventBus.emit_signal("show_game_over", 2)
+			LevelEventBus.emit_signal("update_money_received", calculate_money())
 			save_data()
 			game_active = false
 
-	if self.global_position.y < -2000:
-		velocity.y = 0
+	if self.global_position.y < -1000:
+		velocity.y = move_toward(velocity.y, 0, 1)
 	
 	if self.global_position.x < 0:
 		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
@@ -88,12 +91,13 @@ func _on_AreaDetector_area_entered(area):
 	velocity /= 1.75
 	
 func save_data():
-	var game_data = GameData.new()
-	if convert_distance_to_meters(self.global_position.x) > game_data.best_distance:
+	game_data.money += calculate_money()
+	if self.global_position.x > game_data.best_actual_distance:
 		game_data.best_distance = convert_distance_to_meters(self.global_position.x)
-		game_data.best_actual_distance = self.global_position.x - 96
-		verify_save_existence()
-		ResourceSaver.save("user://Data/game_data.tres", game_data)
+		game_data.best_actual_distance = self.global_position.x
+	
+	verify_save_existence()
+	ResourceSaver.save("user://Data/game_data.tres", game_data)
 	
 func convert_distance_to_meters(dist):
 	return round((dist - 96) / 250)
@@ -103,3 +107,6 @@ func verify_save_existence():
 	dir.open("user://")
 	if !dir.dir_exists("Data"):
 		dir.make_dir("Data")
+
+func calculate_money():
+	return convert_distance_to_meters(self.global_position.x * 0.75)

@@ -13,3 +13,5 @@ signal show_level_uis
 signal show_game_over
 
 signal game_status
+
+signal update_money_received

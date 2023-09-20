@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Statistics/best_distance.gd" type="Script" id=2]
 
 [node name="Statistics" type="Node2D"]
 
@@ -40,12 +41,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control/Panel/VBoxContainer"]
+[node name="BestDistance" type="Label" parent="Control/Panel/VBoxContainer"]
 margin_right = 864.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 text = "Best Distance: 0 m"
 valign = 1
+script = ExtResource( 2 )
 
 [node name="TitleScreenButton" parent="." instance=ExtResource( 1 )]
 margin_left = 16.0
