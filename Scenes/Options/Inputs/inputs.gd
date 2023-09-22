@@ -10,11 +10,11 @@ onready var game_data = load("user://Data/game_data.tres") as GameData
 func _ready():
 	match button_name:
 		"Fire Cannon":
-			self.set_text(OS.get_scancode_string(game_data.input_fire_cannon.physical_scancode))
+			self.set_text(OS.get_scancode_string(OptionsData.load_file("Inputs", "CannonFire", 88)))
 		"Dash":
-			self.set_text(OS.get_scancode_string(game_data.input_dash.physical_scancode))
+			self.set_text(OS.get_scancode_string(OptionsData.load_file("Inputs", "Dash", 90)))
 		"Fall":
-			self.set_text(OS.get_scancode_string(game_data.input_fall.physical_scancode))
+			self.set_text(OS.get_scancode_string(OptionsData.load_file("Inputs", "Fall", 88)))
 	OptionsEventBus.connect("toggle_buttons", self, "toggle_buttons")
 
 func _on_Fire_Cannon_pressed():
@@ -50,11 +50,11 @@ func change_key(new_key):
 	InputMap.action_add_event(action_string, new_key)
 	match action_string:
 		"cannon_fire":
-			game_data.input_fire_cannon = new_key
+			OptionsData.save_file("Inputs", "CannonFire", new_key.physical_scancode)
 		"dash":
-			game_data.input_dash = new_key
+			OptionsData.save_file("Inputs", "Dash", new_key.physical_scancode)
 		"fall":
-			game_data.input_fall = new_key
+			OptionsData.save_file("Inputs", "Fall", new_key.physical_scancode)
 	ResourceSaver.save("user://Data/game_data.tres", game_data)
 	self.set_text(OS.get_scancode_string(new_key.physical_scancode))
 	self.set_pressed(false)

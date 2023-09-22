@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 LevelEventBus="*res://Global Scripts/Event Bus/level_event_bus.gd"
 OptionsEventBus="*res://Global Scripts/Event Bus/options_event_bus.gd"
 ShopEventBus="*res://Global Scripts/Event Bus/shop_event_bus.gd"
+OptionsData="*res://Data/options_data.gd"
 
 [display]
 
