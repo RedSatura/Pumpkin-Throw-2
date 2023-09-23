@@ -20,6 +20,9 @@ func _process(delta):
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("restart"):
 		get_tree().change_scene("res://Scenes/level/level.tscn")
+		
+	if Input.is_action_just_pressed("back_to_menu"):
+		get_tree().change_scene("res://Scenes/Title Screen/title_screen.tscn")
 	
 func update_camera_position(pos):
 	camera.set_zoom(Vector2(clamp(abs(pos.y - 700) / 500, 1, 2.5), clamp(abs(pos.y - 700) / 500, 1, 2.5)))
@@ -27,7 +30,7 @@ func update_camera_position(pos):
 
 func create_bouncepad(times_created):
 	var bouncepad = load("res://Scenes/Level/Level Objects/Bouncepad/bouncepad.tscn").instance()
-	bouncepad.global_position = Vector2(times_created * 500 + 1000, rand_range(225, 400))
+	bouncepad.global_position = Vector2(times_created * 750 + 1000, rand_range(225, 400))
 	add_child(bouncepad)
 
 func spawn_bouncepad(pos):
@@ -37,11 +40,10 @@ func spawn_bouncepad(pos):
 		
 func create_mud(times_created):
 	var mud = load("res://Scenes/Level/Level Objects/Mud/mud.tscn").instance()
-	mud.global_position = Vector2(times_created * 1000 + 1500 + rand_range(-500, 500), 576)
+	mud.global_position = Vector2(times_created * 1250 + 1500 + rand_range(-500, 500), 576)
 	add_child(mud)
 		
 func spawn_mud(pos):
-	#print(pos, " ", mud_number, " ", mud_number * 1000 - 10000)
 	if pos > mud_number * 10 - 1000:
 		create_mud(mud_number)
 		mud_number += 1

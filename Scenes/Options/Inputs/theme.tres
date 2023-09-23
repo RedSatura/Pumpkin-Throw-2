@@ -1,0 +1,4 @@
+[gd_resource type="Theme" format=2]
+
+[resource]
+Button/colors/font_color_pressed = Color( 1, 0.627451, 0, 1 )
