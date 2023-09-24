@@ -7,11 +7,13 @@ enum CannonState {
 	FIRING,
 }
 
-onready var pumpkin_spawner = $PumpkinSpawner
+
 
 var cannon_state = CannonState.AIMING
 var force = 1000
 var angle = 0
+
+onready var pumpkin_spawner = $PumpkinSpawner
 
 func _ready():
 	LevelEventBus.connect("get_power_bar_value", self, "set_cannon_force")
@@ -23,8 +25,10 @@ func _unhandled_input(_event):
 				pass
 			CannonState.AIMING:
 				cannon_state = CannonState.POWERING
+				LevelEventBus.emit_signal("get_cannon_status", cannon_state)
 			CannonState.POWERING:
 				cannon_state = CannonState.FIRING
+				LevelEventBus.emit_signal("get_cannon_status", cannon_state)
 			CannonState.FIRING:
 				pass
 			

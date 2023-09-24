@@ -15,6 +15,7 @@ func reset_data():
 	game_data.best_distance = 0
 	game_data.best_actual_distance = 0
 	game_data.money = 0
+	game_data.tutorial_active = true
 	
 	ResourceSaver.save("user://Data/game_data.tres", game_data)
 

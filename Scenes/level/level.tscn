@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=17]
 [ext_resource path="res://Scenes/Level/UI/best_distance_bar.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/Level/UI/GameOverScreen/game_over_money.gd" type="Script" id=19]
+[ext_resource path="res://Scenes/Level/UI/Tutorial/tutorial_label.gd" type="Script" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.5, 32 )
@@ -26,20 +27,10 @@ extents = Vector2( 98.5, 32 )
 [node name="Level" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="BestDistanceBar" type="TextureRect" parent="."]
-margin_left = -64.0
-margin_top = -1224.0
-margin_bottom = 1568.0
-texture = ExtResource( 17 )
-stretch_mode = 2
-script = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DistanceLabel" type="Label" parent="CanvasLayer"]
+visible = false
 margin_right = 256.0
 margin_bottom = 64.0
 text = "Distance: 0m"
@@ -184,6 +175,38 @@ one_shot = true
 [node name="Mud" parent="CanvasLayer/GameOverScreen" instance=ExtResource( 16 )]
 position = Vector2( 544, 504 )
 
+[node name="BestDistanceBar" type="TextureRect" parent="CanvasLayer"]
+margin_left = -64.0
+margin_top = -1224.0
+margin_bottom = 1568.0
+texture = ExtResource( 17 )
+stretch_mode = 2
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialLabel" type="Label" parent="CanvasLayer/Tutorial"]
+margin_left = 128.0
+margin_right = 896.0
+margin_bottom = 128.0
+align = 1
+valign = 1
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Tutorial/TutorialLabel"]
+one_shot = true
+
 [node name="Cannon" type="Polygon2D" parent="."]
 position = Vector2( 64, 512 )
 color = Color( 0, 0, 0, 1 )
@@ -235,3 +258,4 @@ region_rect = Rect2( 0, 0, 30, 64 )
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="CanvasLayer/GameOverScreen/RestartButton" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/ShopButton" to="CanvasLayer/GameOverScreen/ShopButton" method="_on_ShopButton_pressed"]
 [connection signal="timeout" from="CanvasLayer/GameOverScreen/ShowGameOverScreen" to="CanvasLayer/GameOverScreen" method="_on_ShowGameOverScreen_timeout"]
+[connection signal="timeout" from="CanvasLayer/Tutorial/TutorialLabel/Timer" to="CanvasLayer/Tutorial/TutorialLabel" method="_on_Timer_timeout"]

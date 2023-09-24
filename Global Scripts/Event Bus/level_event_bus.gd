@@ -15,3 +15,5 @@ signal show_game_over
 signal game_status
 
 signal update_money_received
+
+signal get_cannon_status

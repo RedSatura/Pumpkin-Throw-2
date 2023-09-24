@@ -224,14 +224,24 @@ __meta__ = {
 [node name="Description" type="Label" parent="Control/Panel/ItemDisplay"]
 margin_top = 304.0
 margin_right = 256.0
-margin_bottom = 472.0
-rect_min_size = Vector2( 256, 168 )
+margin_bottom = 408.0
+rect_min_size = Vector2( 256, 104 )
 text = "Item Description!"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EquipButton" type="Button" parent="Control/Panel/ItemDisplay"]
+margin_top = 408.0
+margin_right = 256.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 0, 64 )
+focus_mode = 0
+disabled = true
+text = "Equip!"
+flat = true
 
 [node name="MoneyLabel" type="Label" parent="Control/Panel"]
 margin_left = 736.0

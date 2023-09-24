@@ -88,7 +88,7 @@ func _on_FallCooldown_timeout():
 	LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _on_AreaDetector_area_entered(area):
-	velocity /= 1.75
+	velocity /= 2.5
 	
 func save_data():
 	game_data.money += calculate_money()
