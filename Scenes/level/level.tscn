@@ -57,6 +57,18 @@ __meta__ = {
 color = Color( 1, 0.235294, 0.235294, 1 )
 polygon = PoolVector2Array( 0, 0, 0, 96, 96, 96, 96, 0 )
 
+[node name="TimeLeft" type="Label" parent="CanvasLayer/DashButton"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 96.0
+margin_bottom = 96.0
+text = "0.0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FallButton" type="TextureButton" parent="CanvasLayer"]
 margin_left = 912.0
 margin_top = 480.0
@@ -71,6 +83,18 @@ __meta__ = {
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/FallButton"]
 color = Color( 1, 0.290196, 0.290196, 1 )
 polygon = PoolVector2Array( 0, 0, 96, 0, 96, 96, 0, 96 )
+
+[node name="TimeLeft" type="Label" parent="CanvasLayer/FallButton"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 96.0
+margin_bottom = 96.0
+text = "0.0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PowerBar" type="TextureProgress" parent="CanvasLayer"]
 margin_left = 16.0

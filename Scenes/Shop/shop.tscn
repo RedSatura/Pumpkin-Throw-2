@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Shop/ShopItem/shop_item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Shop/item_display.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Shop/shop_items.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Shop/currency_label.gd" type="Script" id=5]
 
 [node name="Shop" type="Node2D"]
@@ -65,119 +64,44 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer"]
-margin_right = 656.0
+margin_right = 524.0
 margin_bottom = 164.0
 columns = 5
 
-[node name="Item" type="VBoxContainer" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer"]
-margin_right = 128.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 160 )
-script = ExtResource( 4 )
+[node name="ShopItem" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+cost = 12898
+title = "Item1"
+description = "Cost: $12,898
 
-[node name="TextureRect" type="TextureRect" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item"]
-margin_right = 128.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 1 )
-stretch_mode = 2
+I think this is a really good item"
 
-[node name="Label" type="Label" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item"]
-margin_top = 132.0
-margin_right = 128.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 32 )
-text = "$547,547"
-align = 1
-valign = 1
-
-[node name="Item2" type="VBoxContainer" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer"]
+[node name="ShopItem2" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 132.0
 margin_right = 260.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 160 )
+cost = 1829381
+title = "Item2"
+description = "Cost: $1,829,381
 
-[node name="TextureRect" type="TextureRect" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item2"]
-margin_right = 128.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 1 )
-stretch_mode = 2
+A bit expensive but very fancy"
 
-[node name="Label" type="Label" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item2"]
-margin_top = 132.0
-margin_right = 128.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 32 )
-text = "$547,547"
-align = 1
-valign = 1
-
-[node name="Item3" type="VBoxContainer" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer"]
+[node name="ShopItem3" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 264.0
 margin_right = 392.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 160 )
+cost = 1000000000000
+title = "Item3"
+description = "Cost: $1,000,000,000,000
 
-[node name="TextureRect" type="TextureRect" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item3"]
-margin_right = 128.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 1 )
-stretch_mode = 2
+Don't even bother"
 
-[node name="Label" type="Label" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item3"]
-margin_top = 132.0
-margin_right = 128.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 32 )
-text = "$547,547"
-align = 1
-valign = 1
-
-[node name="Item4" type="VBoxContainer" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer"]
+[node name="ShopItem4" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 396.0
 margin_right = 524.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 160 )
+cost = 100
+title = "Item4"
+description = "Cost: $100
 
-[node name="TextureRect" type="TextureRect" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item4"]
-margin_right = 128.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 1 )
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item4"]
-margin_top = 132.0
-margin_right = 128.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 32 )
-text = "$547,547"
-align = 1
-valign = 1
-
-[node name="Item5" type="VBoxContainer" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer"]
-margin_left = 528.0
-margin_right = 656.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 160 )
-
-[node name="TextureRect" type="TextureRect" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item5"]
-margin_right = 128.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 1 )
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item5"]
-margin_top = 132.0
-margin_right = 128.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 128, 32 )
-text = "$547,547"
-align = 1
-valign = 1
+Dirt cheap and it sucks as well
+"
 
 [node name="Test" type="Tabs" parent="Control/Panel/TabContainer"]
 visible = false
@@ -214,7 +138,7 @@ margin_top = 256.0
 margin_right = 256.0
 margin_bottom = 304.0
 rect_min_size = Vector2( 0, 48 )
-text = "Item Title!"
+text = "Select a shop item!"
 align = 1
 valign = 1
 __meta__ = {
@@ -226,8 +150,6 @@ margin_top = 304.0
 margin_right = 256.0
 margin_bottom = 408.0
 rect_min_size = Vector2( 256, 104 )
-text = "Item Description!"
-align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -261,5 +183,3 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 80.0
 margin_bottom = 80.0
-
-[connection signal="gui_input" from="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item" to="Control/Panel/TabContainer/PumpkinCustom/ScrollContainer/GridContainer/Item" method="_on_Item_gui_input"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Shop/shop_items.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="ShopItem" type="VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 128, 160 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="PriceLabel" type="Label" parent="."]
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 128, 32 )
+align = 1
+valign = 1
+
+[connection signal="gui_input" from="." to="." method="_on_Item_gui_input"]

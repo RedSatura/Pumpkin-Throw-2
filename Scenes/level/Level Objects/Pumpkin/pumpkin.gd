@@ -40,6 +40,8 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision.normal) / 1.1
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", convert_distance_to_meters(self.global_position.x))
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
+	LevelEventBus.emit_signal("check_dash_time_left", stepify(dash_cooldown.time_left, 0.1))
+	LevelEventBus.emit_signal("check_fall_time_left", stepify(fall_cooldown.time_left, 0.1))
 	
 	if velocity.length() < 2.2:
 		dash_enabled = false

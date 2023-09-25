@@ -19,7 +19,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Title" type="Label" parent="CanvasLayer/Control"]
 anchor_right = 1.0
 margin_bottom = 64.0
 text = "Pumpkin Throw 2"
@@ -42,7 +42,7 @@ __meta__ = {
 margin_left = 128.0
 margin_top = 68.0
 margin_right = 768.0
-margin_bottom = 404.0
+margin_bottom = 448.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -99,15 +99,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+[node name="HelpButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
 margin_top = 272.0
 margin_right = 640.0
 margin_bottom = 336.0
+rect_min_size = Vector2( 0, 64 )
+focus_mode = 0
+text = "Help"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+margin_top = 340.0
+margin_right = 640.0
+margin_bottom = 404.0
 rect_min_size = Vector2( 640, 64 )
 focus_mode = 0
 text = "Credits"
 flat = true
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VersionNumber" type="Label" parent="CanvasLayer/Control"]
+margin_left = 824.0
+margin_top = 544.0
+margin_right = 952.0
+margin_bottom = 576.0
+text = "v0.1.0"
+align = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

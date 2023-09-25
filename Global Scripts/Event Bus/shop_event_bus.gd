@@ -1,3 +1,5 @@
 extends Node
 
 signal update_item_display
+signal update_item_display_title
+signal update_item_display_description
