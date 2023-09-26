@@ -4,8 +4,11 @@ onready var polygon_2d = $Polygon2D
 onready var time_left_label = $TimeLeft
 
 func _ready():
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("check_fall_cooldown", self, "update_button")
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("show_level_uis", self, "show_mode")
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("check_fall_time_left", self, "update_time_left_label")
 	self.visible = false
 	polygon_2d.color = Color(0.86, 0.08, 0.24, 1)

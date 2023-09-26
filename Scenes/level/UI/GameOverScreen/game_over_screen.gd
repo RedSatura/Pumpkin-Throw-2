@@ -3,6 +3,7 @@ extends Panel
 onready var show_game_over_timer = $ShowGameOverScreen
 
 func _ready():
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("show_game_over", self, "set_visibility")
 	self.visible = false
 

@@ -16,6 +16,7 @@ var angle = 0
 onready var pumpkin_spawner = $PumpkinSpawner
 
 func _ready():
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_power_bar_value", self, "set_cannon_force")
 
 func _unhandled_input(_event):

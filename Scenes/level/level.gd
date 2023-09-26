@@ -5,24 +5,30 @@ onready var camera = $Camera2D
 var bouncepad_number = 1
 var mud_number = 1
 
+var end_game_disabled = false
+
 func _ready():
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_pumpkin_position", self, "update_camera_position")
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_current_pumpkin_distance", self, "spawn_bouncepad")
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_current_pumpkin_distance", self, "spawn_mud")
 	for x in bouncepad_number:
 		create_bouncepad(x)
 	for x in mud_number:
 		create_mud(x)
-		
-func _process(delta):
-	pass
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("restart"):
-		get_tree().change_scene("res://Scenes/level/level.tscn")
+		var _level_change_scene = get_tree().change_scene("res://Scenes/level/level.tscn")
 		
 	if Input.is_action_just_pressed("back_to_menu"):
-		get_tree().change_scene("res://Scenes/Title Screen/title_screen.tscn")
+		var _title_screen_change_scene = get_tree().change_scene("res://Scenes/Title Screen/title_screen.tscn")
+		
+	if Input.is_action_just_pressed("end_game") && !end_game_disabled:
+		end_game_disabled = true
+		LevelEventBus.emit_signal("end_game", true)
 	
 func update_camera_position(pos):
 	camera.set_zoom(Vector2(clamp(abs(pos.y - 700) / 500, 1, 2.5), clamp(abs(pos.y - 700) / 500, 1, 2.5)))

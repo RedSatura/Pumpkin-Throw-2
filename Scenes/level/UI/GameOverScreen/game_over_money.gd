@@ -1,6 +1,7 @@
 extends Label
 
 func _ready():
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("update_money_received", self, "update_label")
 	
 func update_label(money):

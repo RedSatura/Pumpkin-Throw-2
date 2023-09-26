@@ -4,6 +4,7 @@ onready var base_pivot = $BasePivot
 onready var base = $BasePivot/Base
 
 func _ready():
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_pumpkin_position", self, "check_pumpkin_position")
 	self.rotation_degrees = rand_range(-10, 20)
 	base_pivot.rotation_degrees = self.rotation_degrees * -1.0

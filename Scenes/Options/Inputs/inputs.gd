@@ -17,6 +17,7 @@ func _ready():
 			self.set_text(OS.get_scancode_string(OptionsData.load_file("Inputs", "CannonUp", 16777232)))
 		"CannonDown":
 			self.set_text(OS.get_scancode_string(OptionsData.load_file("Inputs", "CannonDown", 16777234)))
+# warning-ignore:return_value_discarded
 	OptionsEventBus.connect("toggle_buttons", self, "toggle_buttons")
 	
 func change_key(new_key):

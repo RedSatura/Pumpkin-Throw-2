@@ -4,6 +4,7 @@ export(int) var cost = 0
 export(String) var title = ""
 export(String, MULTILINE) var description = ""
 export(String, FILE) var image_path = "res://icon.png"
+export(String, FILE) var pumpkin_texture_path = ""
 
 onready var tex = $TextureRect
 onready var price_label = $PriceLabel
@@ -19,6 +20,7 @@ func _on_Item_gui_input(event):
 			ShopEventBus.emit_signal("update_item_display", image_path)
 			ShopEventBus.emit_signal("update_item_display_title", title)
 			ShopEventBus.emit_signal("update_item_display_description", description)
+			ShopEventBus.emit_signal("update_equip_button", pumpkin_texture_path)
 
 func comma_number(num):
 	var comma_num = ""

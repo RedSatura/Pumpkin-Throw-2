@@ -17,7 +17,7 @@ func reset_data():
 	game_data.money = 0
 	game_data.tutorial_active = true
 	
-	ResourceSaver.save("user://Data/game_data.tres", game_data)
+	var _reset_data_status = ResourceSaver.save("user://Data/game_data.tres", game_data)
 
 func _on_ResetData_pressed():
 	match button_state:

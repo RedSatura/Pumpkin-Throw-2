@@ -7,10 +7,8 @@ func _ready():
 			self.set_global_position(Vector2(-64, 0))
 		else:
 			self.set_global_position(Vector2(game_data.best_actual_distance, 0))
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_pumpkin_position", self, "update_x_position")
-
-func _process(delta):
-	pass
 	
 func update_x_position(pos):
 	self.rect_position.y = pos.y - 1000
