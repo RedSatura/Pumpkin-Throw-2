@@ -23,13 +23,15 @@ onready var game_data = load("user://Data/game_data.tres") as GameData
 
 onready var dash_cooldown = $DashCooldown
 onready var fall_cooldown = $FallCooldown
+onready var pumpkin_sprite = $Sprite
 
 func _ready():
 	randomize()
-	self.z_index = -1
 	rand_rotation_value = rand_range(-10, 10)
 	velocity.y = -initial_force * sin(cannon_angle)
 	velocity.x = initial_force * cos(cannon_angle)
+	update_pumpkin_texture(game_data.pumpkin_texture_path)
+# warning-ignore:return_value_discarded
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("end_game", self, "end_game")
 	LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
@@ -45,7 +47,6 @@ func _physics_process(delta):
 			velocity = velocity.bounce(collision.normal) / bounce_divider
 	else:
 		pass
-		
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", convert_distance_to_meters(self.global_position.x))
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
 	LevelEventBus.emit_signal("check_dash_time_left", stepify(dash_cooldown.time_left, 0.1))
@@ -71,14 +72,14 @@ func _unhandled_input(_event):
 		velocity.x += 200
 		dash_times += 1
 		dash_enabled = false
-		dash_cooldown.start(1 + (dash_times * 0.1))
+		dash_cooldown.start(1 + (dash_times * 0.05))
 		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
 		
 	if Input.is_action_just_pressed("fall") && fall_enabled:
 		velocity.y += 500
 		fall_times += 1
 		fall_enabled = false
-		fall_cooldown.start(3 + (fall_times * 0.2))
+		fall_cooldown.start(3 + (fall_times * 0.15))
 		LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _on_DashCooldown_timeout():
@@ -94,6 +95,7 @@ func _on_AreaDetector_area_entered(_area):
 	
 func save_data():
 	game_data.money += calculate_money()
+	game_data.total_money += calculate_money()
 	if self.global_position.x > game_data.best_actual_distance:
 		game_data.best_distance = convert_distance_to_meters(self.global_position.x)
 		game_data.best_actual_distance = self.global_position.x
@@ -125,3 +127,10 @@ func end_game(status):
 		LevelEventBus.emit_signal("update_money_received", calculate_money())
 		save_data()
 		game_status = false
+		
+func update_pumpkin_texture(path):
+	var dir = Directory.new()
+	dir.open("user://")
+	if dir.file_exists(path):
+		pumpkin_sprite.texture = load(path)
+		

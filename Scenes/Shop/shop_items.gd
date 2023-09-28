@@ -20,7 +20,7 @@ func _on_Item_gui_input(event):
 			ShopEventBus.emit_signal("update_item_display", image_path)
 			ShopEventBus.emit_signal("update_item_display_title", title)
 			ShopEventBus.emit_signal("update_item_display_description", description)
-			ShopEventBus.emit_signal("update_equip_button", pumpkin_texture_path)
+			ShopEventBus.emit_signal("update_equip_button", pumpkin_texture_path, cost)
 
 func comma_number(num):
 	var comma_num = ""

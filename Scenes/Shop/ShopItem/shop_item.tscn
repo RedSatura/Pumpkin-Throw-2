@@ -17,7 +17,8 @@ margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 2 )
-stretch_mode = 2
+expand = true
+stretch_mode = 6
 
 [node name="PriceLabel" type="Label" parent="."]
 margin_top = 132.0
@@ -26,5 +27,6 @@ margin_bottom = 164.0
 rect_min_size = Vector2( 128, 32 )
 align = 1
 valign = 1
+clip_text = true
 
 [connection signal="gui_input" from="." to="." method="_on_Item_gui_input"]

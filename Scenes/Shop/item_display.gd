@@ -4,7 +4,7 @@ export(String) var title_text = ""
 export(String, MULTILINE) var description_text = ""
 
 onready var title = $Title
-onready var description = $Description
+onready var description = $ScrollContainer/Description
 onready var item_display = $ItemDisplay
 
 func _ready():

@@ -15,7 +15,9 @@ func reset_data():
 	game_data.best_distance = 0
 	game_data.best_actual_distance = 0
 	game_data.money = 0
+	game_data.total_money = 0
 	game_data.tutorial_active = true
+	game_data.pumpkin_texture_path = ""
 	
 	var _reset_data_status = ResourceSaver.save("user://Data/game_data.tres", game_data)
 

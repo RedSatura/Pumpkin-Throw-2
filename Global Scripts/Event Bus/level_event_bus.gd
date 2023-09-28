@@ -1,5 +1,7 @@
 extends Node
 
+onready var pumpkin_texture_path = ""
+
 # warning-ignore:unused_signal
 signal set_cannon_status
 # warning-ignore:unused_signal
