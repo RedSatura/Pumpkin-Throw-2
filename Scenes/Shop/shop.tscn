@@ -80,6 +80,7 @@ margin_right = 256.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 256, 104 )
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -120,15 +121,16 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
-margin_right = 524.0
+margin_right = 392.0
 margin_bottom = 164.0
 columns = 5
 
 [node name="ShopItem" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
-title = "Item1"
+title = "Default Pumpkin"
 description = "Cost: Free
 
 The default item."
+image_path = "res://icon.png"
 pumpkin_texture_path = "res://icon.png"
 
 [node name="ShopItem2" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
@@ -139,26 +141,19 @@ title = "icon.png"
 description = "Cost: $20
 
 Throw the Godot Engine logo around!"
+image_path = "res://icon.png"
 pumpkin_texture_path = "res://icon.png"
 
 [node name="ShopItem4" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 264.0
 margin_right = 392.0
 cost = 100
-title = "Item4"
+title = "Nothing"
 description = "Cost: $100
 
-Dirt cheap and it sucks
+Literally nothing. Want an invisible pumpkin? Go ahead! Buy this to make your life harder!
 "
-
-[node name="ShopItem3" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
-margin_left = 396.0
-margin_right = 524.0
-cost = 1000000
-title = "Item3"
-description = "Cost: $1,000,000
-
-Don't even bother"
+pumpkin_texture_path = "invisible_pumpkin"
 
 [node name="TitleScreenButton" parent="." instance=ExtResource( 2 )]
 margin_left = 16.0

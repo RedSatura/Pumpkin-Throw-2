@@ -3,7 +3,7 @@ extends VBoxContainer
 export(int) var cost = 0
 export(String) var title = ""
 export(String, MULTILINE) var description = ""
-export(String, FILE) var image_path = "res://icon.png"
+export(String, FILE) var image_path = ""
 export(String, FILE) var pumpkin_texture_path = ""
 
 onready var tex = $TextureRect

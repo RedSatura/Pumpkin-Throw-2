@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const gravity = 250
 
-export var bounce_divider = 1.1
+export var bounce_divider = 1.2
 
 var velocity = Vector2(0, 0)
 var weight = 0

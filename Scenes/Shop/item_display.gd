@@ -16,9 +16,12 @@ func _ready():
 	ShopEventBus.connect("update_item_display_description", self, "update_description")
 
 func update_display(path):
-	if path != null:
-		var tex = load(path)
-		item_display.texture = tex
+	var dir = Directory.new()
+	dir.open("user://")
+	if dir.file_exists(path):
+		item_display.texture = load(path)
+	else:
+		item_display.texture = load(path)
 
 func update_title(string):
 	title.text = string

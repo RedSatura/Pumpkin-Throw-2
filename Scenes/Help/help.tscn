@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleScreenButton" parent="Control/Panel" instance=ExtResource( 1 )]
+
+[node name="Help" type="Label" parent="Control/Panel"]
+margin_right = 960.0
+margin_bottom = 64.0
+text = "Help"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel"]
+margin_left = 32.0
+margin_top = 56.0
+margin_right = 928.0
+margin_bottom = 504.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpDescription" type="Label" parent="Control/Panel/ScrollContainer"]
+margin_right = 864.0
+margin_bottom = 558.0
+rect_min_size = Vector2( 864, 0 )
+text = "How to play:
+
+Goal: Try throwing a pumpkin as far as possible!
+To tilt the cannon forward and backwards, use Up and Down!
+Then, if you're satisfied with the angle, press X to select!
+After that the power bar will appear. Wait until it fills up, then press X to fire!
+Good luck!
+
+
+
+Buttons:
+You can see them at the lower right corner. They are the Dash Button (left) and Fall Button (right).
+Press the Z button to activate Dash. This pushes your pumpkin a little bit forward.
+Press the X button to Fall. It makes your pumpkin fall down by a significant amount. It's very useful when stuck in mud!
+However, every time each button is used, their respective cooldown gets longer by a small amount. This can really add up, so be careful!
+
+
+
+Bouncpads and Mud:
+Bouncepads can change your pumpkin's trajectory! If you Fall into a bouncepad that's facing at just the right angle, it can be a huge boost!
+Mud can be found at the ground. Making contact with mud greatly reduces your pumpkin's velocity. Be very careful, they can end your run!
+
+
+
+Game Overs and Money:
+When your pumpkin is barely moving anymore, your throw ends and the game is over. Because people LOVE to see pumpkins being thrown so much they'll pay you based on how far you've gone! 
+(Formula for money: Meters travelled * 0.75)
+Money can be spent on the shop! The shop has items that can change your pumpkin's look! These have no effect on gameplay and are purely for cosmetic purposes."
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

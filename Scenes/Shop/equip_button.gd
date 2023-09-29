@@ -23,8 +23,24 @@ func update_equip_button(path, cost):
 	var dir = Directory.new()
 	dir.open("user://")
 	if !dir.file_exists(path):
-		set_disabled(true)
-		self.set_text("INVALID FILEPATH")
+		if path == "invisible_pumpkin":
+			if game_data.money < cost:
+				self.set_text("Too expensive!")
+				set_disabled(true)
+				button_state = ButtonState.DISABLED
+			elif path == game_data.pumpkin_texture_path:
+				set_disabled(true)
+				self.set_text("Equipped!")
+				button_state = ButtonState.EQUIPPED
+			else:
+				set_disabled(false)
+				self.set_text("Buy!")
+				texture_path = path
+				item_cost = cost
+				button_state = ButtonState.BUYABLE
+		else:
+			set_disabled(true)
+			self.set_text("INVALID FILEPATH")
 	else:
 		if game_data.money < cost:
 			self.set_text("Too expensive!")

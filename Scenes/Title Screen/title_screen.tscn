@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Title Screen/Play Button/play_button.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Title Screen/Shop Button/shop_button.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Title Screen/Credits Button/credits_button.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Title Screen/Statistics Button/stats_button.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Title Screen/title_screen.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Title Screen/Help Button/help_button.gd" type="Script" id=7]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 6 )
@@ -107,6 +108,7 @@ rect_min_size = Vector2( 0, 64 )
 focus_mode = 0
 text = "Help"
 flat = true
+script = ExtResource( 7 )
 
 [node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
 margin_top = 340.0
@@ -137,4 +139,5 @@ __meta__ = {
 [connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/ShopButton" to="CanvasLayer/Control/Panel/VBoxContainer/ShopButton" method="_on_ShopButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/OptionsButton" to="CanvasLayer/Control/Panel/VBoxContainer/OptionsButton" method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/StatsButton" to="CanvasLayer/Control/Panel/VBoxContainer/StatsButton" method="_on_StatsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/HelpButton" to="CanvasLayer/Control/Panel/VBoxContainer/HelpButton" method="_on_HelpButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/CreditsButton" to="CanvasLayer/Control/Panel/VBoxContainer/CreditsButton" method="_on_CreditsButton_pressed"]
