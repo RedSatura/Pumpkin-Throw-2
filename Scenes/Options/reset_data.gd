@@ -17,7 +17,7 @@ func reset_data():
 	game_data.money = 0
 	game_data.total_money = 0
 	game_data.tutorial_active = true
-	game_data.pumpkin_texture_path = ""
+	game_data.pumpkin_texture_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
 	
 	var _reset_data_status = ResourceSaver.save("user://Data/game_data.tres", game_data)
 

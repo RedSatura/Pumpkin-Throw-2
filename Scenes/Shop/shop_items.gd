@@ -5,6 +5,7 @@ export(String) var title = ""
 export(String, MULTILINE) var description = ""
 export(String, FILE) var image_path = ""
 export(String, FILE) var pumpkin_texture_path = ""
+export(int) var milestone_number = 0
 
 onready var tex = $TextureRect
 onready var price_label = $PriceLabel
@@ -13,6 +14,7 @@ func _ready():
 	if cost <= 0:
 		cost = 0
 	price_label.text = "$" + str(comma_number(cost))
+	tex.texture = load(image_path)
 
 func _on_Item_gui_input(event):
 	if event is InputEventMouseButton:
@@ -20,7 +22,7 @@ func _on_Item_gui_input(event):
 			ShopEventBus.emit_signal("update_item_display", image_path)
 			ShopEventBus.emit_signal("update_item_display_title", title)
 			ShopEventBus.emit_signal("update_item_display_description", description)
-			ShopEventBus.emit_signal("update_equip_button", pumpkin_texture_path, cost)
+			ShopEventBus.emit_signal("update_equip_button", pumpkin_texture_path, cost, milestone_number)
 
 func comma_number(num):
 	var comma_num = ""

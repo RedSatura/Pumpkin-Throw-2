@@ -73,6 +73,9 @@ margin_right = 256.0
 margin_bottom = 416.0
 size_flags_vertical = 3
 custom_constants/separation = 0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Control/Panel/Input/VBoxContainer"]
 margin_right = 192.0
@@ -232,30 +235,6 @@ script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="Control/Panel/Data/ResetData"]
 one_shot = true
-
-[node name="Audio" type="VBoxContainer" parent="Control/Panel"]
-margin_left = 560.0
-margin_top = 112.0
-margin_right = 816.0
-margin_bottom = 528.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Control/Panel/Audio"]
-margin_right = 256.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 0, 32 )
-text = "Audio"
-align = 1
-valign = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/Audio"]
-margin_top = 36.0
-margin_right = 256.0
-margin_bottom = 416.0
-size_flags_vertical = 3
 
 [node name="TitleScreenButton" parent="Control" instance=ExtResource( 1 )]
 margin_left = 16.0

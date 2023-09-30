@@ -19,7 +19,7 @@ func _ready():
 	ShopEventBus.connect("update_equip_button", self, "update_equip_button")
 	set_disabled(true)
 
-func update_equip_button(path, cost):
+func update_equip_button(path, cost, _milestone_number):
 	var dir = Directory.new()
 	dir.open("user://")
 	if !dir.file_exists(path):

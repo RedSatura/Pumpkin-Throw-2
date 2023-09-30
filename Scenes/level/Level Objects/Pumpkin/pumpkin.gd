@@ -133,4 +133,5 @@ func update_pumpkin_texture(path):
 	dir.open("user://")
 	if dir.file_exists(path):
 		pumpkin_sprite.texture = load(path)
-		
+	else:
+		pass

@@ -130,8 +130,8 @@ title = "Default Pumpkin"
 description = "Cost: Free
 
 The default item."
-image_path = "res://icon.png"
-pumpkin_texture_path = "res://icon.png"
+image_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
+pumpkin_texture_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
 
 [node name="ShopItem2" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 132.0
@@ -162,10 +162,10 @@ margin_right = 80.0
 margin_bottom = 80.0
 
 [node name="Button" type="Button" parent="."]
-margin_left = 560.0
-margin_top = 24.0
-margin_right = 703.0
-margin_bottom = 72.0
+margin_left = 592.0
+margin_top = -128.0
+margin_right = 735.0
+margin_bottom = -80.0
 text = "add a lot of money!!!"
 script = ExtResource( 6 )
 __meta__ = {

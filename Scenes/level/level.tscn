@@ -200,6 +200,7 @@ one_shot = true
 position = Vector2( 544, 504 )
 
 [node name="BestDistanceBar" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color( 0, 0, 0, 1 )
 margin_left = -64.0
 margin_top = -1224.0
 margin_bottom = 1568.0
