@@ -1,8 +1,7 @@
 extends Label
 
 func _ready():
-	var game_data = load("user://Data/game_data.tres") as GameData
-	self.text = "Total Money: $" + comma_num(game_data.total_money)
+	self.text = "Total Money: $" + comma_num(SaveManager.game_data.statistics.total_money)
 	
 func comma_num(num):
 	var comma_num = ""

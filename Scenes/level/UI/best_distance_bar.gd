@@ -1,12 +1,10 @@
 extends TextureRect
 
 func _ready():
-	var game_data = load("user://Data/game_data.tres") as GameData
-	if game_data != null:
-		if game_data.best_actual_distance == 0:
-			self.set_global_position(Vector2(-64, 0))
-		else:
-			self.set_global_position(Vector2(game_data.best_actual_distance, 0))
+	if SaveManager.game_data.statistics.best_distance == 0:
+		self.set_global_position(Vector2(-64, 0))
+	else:
+		self.set_global_position(Vector2(SaveManager.game_data.statistics.best_actual_distance, 0))
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_pumpkin_position", self, "update_x_position")
 	

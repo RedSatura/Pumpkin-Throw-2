@@ -1,11 +1,9 @@
 extends Label
 
-onready var game_data = load("user://Data/game_data.tres") as GameData
-
 func _ready():
 # warning-ignore:return_value_discarded
 	ShopEventBus.connect("update_money_label", self, "update_money_label")
-	self.text = "$" + comma_number(game_data.money)
+	self.text = "$" + comma_number(SaveManager.game_data.current.money)
 
 func comma_number(num):
 	var comma_num = ""

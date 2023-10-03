@@ -8,18 +8,10 @@ enum ButtonState {
 
 var button_state = ButtonState.IDLE
 
-onready var game_data = load("user://Data/game_data.tres") as GameData
 onready var timer = $Timer
 
 func reset_data():
-	game_data.best_distance = 0
-	game_data.best_actual_distance = 0
-	game_data.money = 0
-	game_data.total_money = 0
-	game_data.tutorial_active = true
-	game_data.pumpkin_texture_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
-	
-	var _reset_data_status = ResourceSaver.save("user://Data/game_data.tres", game_data)
+	SaveManager.reset_data()
 
 func _on_ResetData_pressed():
 	match button_state:

@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Resource",
-"class": "GameData",
-"language": "GDScript",
-"path": "res://Data/game_data.gd"
-} ]
-_global_script_class_icons={
-"GameData": ""
-}
-
 [application]
 
 config/name="Pumpkin Throw 2"
@@ -31,11 +21,16 @@ OptionsEventBus="*res://Global Scripts/Event Bus/options_event_bus.gd"
 ShopEventBus="*res://Global Scripts/Event Bus/shop_event_bus.gd"
 OptionsData="*res://Data/options_data.gd"
 StatisticsEventBus="*res://Global Scripts/Event Bus/statistics_event_bus.gd"
+SaveManager="*res://Data/save_manager.gd"
 
 [display]
 
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor]
+
+convert_text_resources_to_binary_on_export=true
 
 [input]
 

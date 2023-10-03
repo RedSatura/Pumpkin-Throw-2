@@ -12,23 +12,19 @@ var button_state = ButtonState.DISABLED
 var texture_path = ""
 var item_cost = 0
 
-onready var game_data = load("user://Data/game_data.tres") as GameData
-
 func _ready():
 # warning-ignore:return_value_discarded
 	ShopEventBus.connect("update_equip_button", self, "update_equip_button")
 	set_disabled(true)
 
 func update_equip_button(path, cost, _milestone_number):
-	var dir = Directory.new()
-	dir.open("user://")
-	if !dir.file_exists(path):
+	if !ResourceLoader.exists(path):
 		if path == "invisible_pumpkin":
-			if game_data.money < cost:
+			if SaveManager.game_data.current.money < cost:
 				self.set_text("Too expensive!")
 				set_disabled(true)
 				button_state = ButtonState.DISABLED
-			elif path == game_data.pumpkin_texture_path:
+			elif path == SaveManager.game_data.current.pumpkin_texture_path:
 				set_disabled(true)
 				self.set_text("Equipped!")
 				button_state = ButtonState.EQUIPPED
@@ -40,13 +36,13 @@ func update_equip_button(path, cost, _milestone_number):
 				button_state = ButtonState.BUYABLE
 		else:
 			set_disabled(true)
-			self.set_text("INVALID FILEPATH")
+			self.set_text("File doesn't exist!")
 	else:
-		if game_data.money < cost:
+		if SaveManager.game_data.current.money < cost:
 			self.set_text("Too expensive!")
 			set_disabled(true)
 			button_state = ButtonState.DISABLED
-		elif path == game_data.pumpkin_texture_path:
+		elif path == SaveManager.game_data.current.pumpkin_texture_path:
 			set_disabled(true)
 			self.set_text("Equipped!")
 			button_state = ButtonState.EQUIPPED
@@ -62,15 +58,14 @@ func _on_EquipButton_pressed():
 		ButtonState.DISABLED:
 			pass
 		ButtonState.BUYABLE:
-			game_data.pumpkin_texture_path = texture_path
-			game_data.money -= item_cost
+			SaveManager.game_data.current.pumpkin_texture_path = texture_path
+			SaveManager.game_data.current.money -= item_cost
+			SaveManager.save_data()
 			button_state = ButtonState.EQUIPPED
 			set_disabled(true)
-			ShopEventBus.emit_signal("update_money_label", game_data.money)
-			var _save_status = ResourceSaver.save("user://Data/game_data.tres", game_data)
+			ShopEventBus.emit_signal("update_money_label", SaveManager.game_data.current.money)
 		ButtonState.EQUIPPABLE:
-			game_data.pumpkin_texture_path = texture_path
-			set_disabled(true)
-			var _save_status = ResourceSaver.save("user://Data/game_data.tres", game_data)
+			SaveManager.game_data.current.pumpkin_texture_path = texture_path
+			SaveManager.save_data()
 		ButtonState.EQUIPPED:
 			pass

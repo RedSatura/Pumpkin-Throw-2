@@ -1,7 +1,5 @@
 extends Node2D
 
-var game_data = load("user://Data/game_data.tres") as GameData
-
 func _ready():
 	load_saved_inputs()
 

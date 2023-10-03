@@ -1,6 +1,5 @@
 extends Node
 
-#OH MY GOD, saving FINALLY FUCKING WORKS!!!!
 var save_path = "user://Data/options_data.cfg"
 var config = ConfigFile.new()
 var load_response = config.load(save_path)

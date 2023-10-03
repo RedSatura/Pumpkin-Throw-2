@@ -19,8 +19,6 @@ var fall_times = 0
 
 var game_status = true
 
-onready var game_data = load("user://Data/game_data.tres") as GameData
-
 onready var dash_cooldown = $DashCooldown
 onready var fall_cooldown = $FallCooldown
 onready var pumpkin_sprite = $Sprite
@@ -30,7 +28,7 @@ func _ready():
 	rand_rotation_value = rand_range(-10, 10)
 	velocity.y = -initial_force * sin(cannon_angle)
 	velocity.x = initial_force * cos(cannon_angle)
-	update_pumpkin_texture(game_data.pumpkin_texture_path)
+	update_pumpkin_texture(SaveManager.game_data.current.pumpkin_texture_path)
 # warning-ignore:return_value_discarded
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("end_game", self, "end_game")
@@ -94,23 +92,15 @@ func _on_AreaDetector_area_entered(_area):
 	velocity /= 2.5
 	
 func save_data():
-	game_data.money += calculate_money()
-	game_data.total_money += calculate_money()
-	if self.global_position.x > game_data.best_actual_distance:
-		game_data.best_distance = convert_distance_to_meters(self.global_position.x)
-		game_data.best_actual_distance = self.global_position.x
-	
-	verify_save_existence()
-	var _game_data_status = ResourceSaver.save("user://Data/game_data.tres", game_data)
-	
+	SaveManager.game_data.current.money += calculate_money()
+	SaveManager.game_data.statistics.total_money += calculate_money()
+	if self.global_position.x > SaveManager.game_data.statistics.best_distance:
+		SaveManager.game_data.statistics.best_distance = convert_distance_to_meters(self.global_position.x)
+		SaveManager.game_data.statistics.best_actual_distance = self.global_position.x
+	SaveManager.save_data()
+
 func convert_distance_to_meters(dist):
 	return round((dist - 96) / 250)
-	
-func verify_save_existence():
-	var dir = Directory.new()
-	dir.open("user://")
-	if !dir.dir_exists("Data"):
-		dir.make_dir("Data")
 
 func calculate_money():
 	return convert_distance_to_meters(self.global_position.x * 0.75)
@@ -129,9 +119,4 @@ func end_game(status):
 		game_status = false
 		
 func update_pumpkin_texture(path):
-	var dir = Directory.new()
-	dir.open("user://")
-	if dir.file_exists(path):
-		pumpkin_sprite.texture = load(path)
-	else:
-		pass
+	pumpkin_sprite.texture = load(path)
