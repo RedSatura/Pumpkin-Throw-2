@@ -5,6 +5,8 @@ export(String) var title = ""
 export(String, MULTILINE) var description = ""
 export(String, FILE) var image_path = ""
 export(String, FILE) var pumpkin_texture_path = ""
+#this will be used to check if an item is equipped
+export(String) var item_name = ""
 export(int) var milestone_number = 0
 
 onready var tex = $TextureRect
@@ -22,7 +24,7 @@ func _on_Item_gui_input(event):
 			ShopEventBus.emit_signal("update_item_display", image_path)
 			ShopEventBus.emit_signal("update_item_display_title", title)
 			ShopEventBus.emit_signal("update_item_display_description", description)
-			ShopEventBus.emit_signal("update_equip_button", pumpkin_texture_path, cost, milestone_number)
+			ShopEventBus.emit_signal("update_equip_button", pumpkin_texture_path, cost, item_name, milestone_number)
 
 func comma_number(num):
 	var comma_num = ""

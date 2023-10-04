@@ -13,6 +13,11 @@ var default_game_data = {
 		
 		"pumpkin_texture_path": "res://Scenes/Shop/Textures/test_pumpkin_texture.png",
 	},
+	"equipped" : {
+		"default_pumpkin": true,
+		"icon.png": false,
+		"invisible_pumpkin": false,
+	},
 	"special": {
 		"tutorial_active": true,
 	},
@@ -58,3 +63,4 @@ func load_data():
 	
 func reset_data():
 	game_data = default_game_data.duplicate(true)
+	save_data()

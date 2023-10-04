@@ -132,6 +132,7 @@ description = "Cost: Free
 The default item."
 image_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
 pumpkin_texture_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
+item_name = "default_pumpkin"
 
 [node name="ShopItem2" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 132.0
@@ -143,6 +144,7 @@ description = "Cost: $20
 Throw the Godot Engine logo around!"
 image_path = "res://icon.png"
 pumpkin_texture_path = "res://icon.png"
+item_name = "icon.png"
 
 [node name="ShopItem4" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 264.0
@@ -154,6 +156,7 @@ description = "Cost: $100
 Literally nothing. Want an invisible pumpkin? Go ahead! Buy this to make your life harder!
 "
 pumpkin_texture_path = "invisible_pumpkin"
+item_name = "invisible_pumpkin"
 
 [node name="TitleScreenButton" parent="." instance=ExtResource( 2 )]
 margin_left = 16.0
@@ -162,10 +165,10 @@ margin_right = 80.0
 margin_bottom = 80.0
 
 [node name="Button" type="Button" parent="."]
-margin_left = 632.0
-margin_top = -72.0
-margin_right = 775.0
-margin_bottom = -24.0
+margin_left = 608.0
+margin_top = -64.0
+margin_right = 751.0
+margin_bottom = -16.0
 text = "add a lot of money!!!"
 script = ExtResource( 6 )
 __meta__ = {

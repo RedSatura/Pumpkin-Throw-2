@@ -111,7 +111,6 @@ __meta__ = {
 }
 
 [node name="GameOverScreen" type="Panel" parent="CanvasLayer"]
-visible = false
 margin_left = 64.0
 margin_top = 40.0
 margin_right = 960.0
@@ -199,18 +198,6 @@ one_shot = true
 [node name="Mud" parent="CanvasLayer/GameOverScreen" instance=ExtResource( 16 )]
 position = Vector2( 544, 504 )
 
-[node name="BestDistanceBar" type="TextureRect" parent="CanvasLayer"]
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = -64.0
-margin_top = -1224.0
-margin_bottom = 1568.0
-texture = ExtResource( 17 )
-stretch_mode = 2
-script = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Tutorial" type="Control" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -279,6 +266,19 @@ scale = Vector2( 48, 1 )
 z_index = -2
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 30, 64 )
+
+[node name="BestDistanceBar" type="TextureRect" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = -72.0
+margin_top = -1240.0
+margin_right = -8.0
+margin_bottom = 1552.0
+texture = ExtResource( 17 )
+stretch_mode = 2
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/RestartButton" to="CanvasLayer/GameOverScreen/RestartButton" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/ShopButton" to="CanvasLayer/GameOverScreen/ShopButton" method="_on_ShopButton_pressed"]

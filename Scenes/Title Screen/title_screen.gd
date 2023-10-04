@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	SaveManager.load_data()
 	load_saved_inputs()
 
 func load_saved_inputs():
