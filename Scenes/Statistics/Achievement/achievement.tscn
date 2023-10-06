@@ -23,7 +23,6 @@ margin_top = 128.0
 margin_right = 128.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 0, 32 )
-text = "Test Achievement"
 align = 1
 valign = 1
 __meta__ = {

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Statistics/best_distance.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Statistics/total_money.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Statistics/Achievement/achievement.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Statistics/test_achievement_achiever.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Statistics/achievement_display.gd" type="Script" id=6]
 
 [node name="Statistics" type="Node2D"]
@@ -105,8 +106,12 @@ __meta__ = {
 }
 
 [node name="Achievement" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
+save_achievement_title = "test_achievement"
+achievement_title = "Test Achievement"
+achievement_description = "Test Achievement, Please Ignore"
 
 [node name="AchievementDisplay" type="VBoxContainer" parent="Control/Panel/TabContainer/Achievements"]
+self_modulate = Color( 1, 1, 0, 0.501961 )
 margin_left = 652.0
 margin_top = 8.0
 margin_right = 908.0
@@ -122,6 +127,7 @@ __meta__ = {
 margin_right = 256.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 256, 256 )
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -129,19 +135,33 @@ __meta__ = {
 [node name="AchievementName" type="Label" parent="Control/Panel/TabContainer/Achievements/AchievementDisplay"]
 margin_top = 256.0
 margin_right = 256.0
-margin_bottom = 288.0
-rect_min_size = Vector2( 0, 32 )
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 48 )
 align = 1
 valign = 1
 
 [node name="AchievementDescription" type="Label" parent="Control/Panel/TabContainer/Achievements/AchievementDisplay"]
-margin_top = 288.0
+margin_top = 304.0
 margin_right = 256.0
 margin_bottom = 416.0
-rect_min_size = Vector2( 0, 128 )
+rect_min_size = Vector2( 0, 112 )
+text = "Select an achievement!"
+valign = 1
+
+[node name="TestAchievementAchiever" type="Button" parent="Control"]
+margin_left = 704.0
+margin_top = -40.0
+margin_right = 863.0
+text = "get a free achievement"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TitleScreenButton" parent="." instance=ExtResource( 1 )]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 80.0
 margin_bottom = 80.0
+
+[connection signal="pressed" from="Control/TestAchievementAchiever" to="Control/TestAchievementAchiever" method="_on_TestAchievementAchiever_pressed"]
