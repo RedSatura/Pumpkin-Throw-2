@@ -23,6 +23,11 @@ var default_game_data = {
 	},
 	"achievements": {
 		"test_achievement": false,
+		#distance-related achievements
+		"100m_thrown": false,
+		"500m_thrown": false,
+		"1km_thrown": false,
+		"marathon_thrown": false,
 	},
 }
 

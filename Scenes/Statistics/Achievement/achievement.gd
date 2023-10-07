@@ -11,8 +11,7 @@ onready var label = $Label
 func _ready():
 	texture_rect.texture = load(achievement_texture)
 	label.text = achievement_title
-	print(save_achievement_title)
-	if SaveManager.game_data["achievements"][save_achievement_title]:
+	if SaveManager.game_data["achieements"][save_achievement_title]:
 		texture_rect.self_modulate = Color(1, 1, 0, 1)
 	else:
 		texture_rect.self_modulate = Color(1, 1, 1, 1)

@@ -101,6 +101,7 @@ margin_right = 636.0
 margin_bottom = 424.0
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
+columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,6 +110,35 @@ __meta__ = {
 save_achievement_title = "test_achievement"
 achievement_title = "Test Achievement"
 achievement_description = "Test Achievement, Please Ignore"
+
+[node name="Achievement2" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
+margin_left = 128.0
+margin_right = 256.0
+save_achievement_title = "100m_thrown"
+achievement_title = "100m Distance"
+achievement_description = "Throw your pumpkin 100 meters!"
+
+[node name="Achievement3" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
+margin_left = 256.0
+margin_right = 384.0
+save_achievement_title = "500m_thrown"
+achievement_title = "500m Distance"
+achievement_description = "Throw your pumpkin 500 meters!"
+
+[node name="Achievement4" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
+margin_left = 384.0
+margin_right = 512.0
+save_achievement_title = "1km_thrown"
+achievement_title = "1km Distance"
+achievement_description = "Throw your pumpkin one kilometer!"
+
+[node name="Achievement5" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
+margin_top = 160.0
+margin_bottom = 320.0
+save_achievement_title = "marathon_thrown"
+achievement_title = "Marathon"
+achievement_description = "Throw your pumpkin as far as the length of a typical marathon (42.195 kilometers).
+It's not easy!"
 
 [node name="AchievementDisplay" type="VBoxContainer" parent="Control/Panel/TabContainer/Achievements"]
 self_modulate = Color( 1, 1, 0, 0.501961 )
@@ -147,6 +177,7 @@ margin_bottom = 416.0
 rect_min_size = Vector2( 0, 112 )
 text = "Select an achievement!"
 valign = 1
+autowrap = true
 
 [node name="TestAchievementAchiever" type="Button" parent="Control"]
 margin_left = 704.0

@@ -48,7 +48,7 @@ __meta__ = {
 }
 
 [node name="ItemDisplay" type="TextureRect" parent="Control/Panel/ItemDisplay"]
-margin_right = 256.0
+margin_right = 268.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 256, 256 )
 expand = true
@@ -58,7 +58,7 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="Control/Panel/ItemDisplay"]
 margin_top = 256.0
-margin_right = 256.0
+margin_right = 268.0
 margin_bottom = 304.0
 rect_min_size = Vector2( 0, 48 )
 text = "Select a shop item!"
@@ -70,7 +70,7 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/ItemDisplay"]
 margin_top = 304.0
-margin_right = 256.0
+margin_right = 268.0
 margin_bottom = 408.0
 rect_min_size = Vector2( 0, 104 )
 scroll_horizontal_enabled = false
@@ -87,7 +87,7 @@ __meta__ = {
 
 [node name="EquipButton" type="Button" parent="Control/Panel/ItemDisplay"]
 margin_top = 408.0
-margin_right = 256.0
+margin_right = 268.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 0, 64 )
 focus_mode = 0

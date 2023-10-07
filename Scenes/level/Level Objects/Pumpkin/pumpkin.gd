@@ -19,6 +19,8 @@ var fall_times = 0
 
 var game_status = true
 
+var distance_in_meters = 0
+
 onready var dash_cooldown = $DashCooldown
 onready var fall_cooldown = $FallCooldown
 onready var pumpkin_sprite = $Sprite
@@ -37,6 +39,7 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
+	distance_in_meters = convert_distance_to_meters(self.global_position.x)
 	var collision = move_and_collide(velocity * delta)
 	
 	if game_status:
@@ -45,7 +48,7 @@ func _physics_process(delta):
 			velocity = velocity.bounce(collision.normal) / bounce_divider
 	else:
 		pass
-	LevelEventBus.emit_signal("get_current_pumpkin_distance", convert_distance_to_meters(self.global_position.x))
+	LevelEventBus.emit_signal("get_current_pumpkin_distance", distance_in_meters)
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position)
 	LevelEventBus.emit_signal("check_dash_time_left", stepify(dash_cooldown.time_left, 0.1))
 	LevelEventBus.emit_signal("check_fall_time_left", stepify(fall_cooldown.time_left, 0.1))
@@ -95,7 +98,7 @@ func save_data():
 	SaveManager.game_data.current.money += calculate_money()
 	SaveManager.game_data.statistics.total_money += calculate_money()
 	if self.global_position.x > SaveManager.game_data.statistics.best_distance:
-		SaveManager.game_data.statistics.best_distance = convert_distance_to_meters(self.global_position.x)
+		SaveManager.game_data.statistics.best_distance = distance_in_meters
 		SaveManager.game_data.statistics.best_actual_distance = self.global_position.x
 	SaveManager.save_data()
 
@@ -116,7 +119,23 @@ func end_game(status):
 		LevelEventBus.emit_signal("show_game_over", 2)
 		LevelEventBus.emit_signal("update_money_received", calculate_money())
 		save_data()
+		check_achievements()
 		game_status = false
 		
 func update_pumpkin_texture(path):
 	pumpkin_sprite.texture = load(path)
+	
+func check_achievements():
+	#don't use save_data() here, i'll clean up my code later
+	if distance_in_meters >= 100:
+		SaveManager.game_data.achievements["100m_thrown"] = true
+		SaveManager.save_data()
+	if distance_in_meters >= 500:
+		SaveManager.game_data.achievements["500m_thrown"] = true
+		SaveManager.save_data()
+	if distance_in_meters >= 1000:
+		SaveManager.game_data.achievements["1km_thrown"] = true
+		SaveManager.save_data()
+	if distance_in_meters >= 42195:
+		SaveManager.game_data.achievements["marathon_thrown"] = true
+		SaveManager.save_data()
