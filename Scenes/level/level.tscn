@@ -49,7 +49,6 @@ margin_bottom = 576.0
 rect_min_size = Vector2( 96, 96 )
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -69,6 +68,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="InputLabel" type="Label" parent="CanvasLayer/DashButton"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 72.0
+margin_bottom = 72.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FallButton" type="TextureButton" parent="CanvasLayer"]
 margin_left = 912.0
 margin_top = 480.0
@@ -76,7 +86,6 @@ margin_right = 1008.0
 margin_bottom = 576.0
 script = ExtResource( 12 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -90,6 +99,17 @@ margin_top = 48.0
 margin_right = 96.0
 margin_bottom = 96.0
 text = "0.0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputLabel" type="Label" parent="CanvasLayer/FallButton"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 72.0
+margin_bottom = 72.0
 align = 1
 valign = 1
 __meta__ = {
@@ -111,6 +131,7 @@ __meta__ = {
 }
 
 [node name="GameOverScreen" type="Panel" parent="CanvasLayer"]
+visible = false
 margin_left = 64.0
 margin_top = 40.0
 margin_right = 960.0
@@ -268,11 +289,11 @@ texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 30, 64 )
 
 [node name="BestDistanceBar" type="TextureRect" parent="."]
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = -72.0
-margin_top = -1240.0
-margin_right = -8.0
-margin_bottom = 1552.0
+self_modulate = Color( 0, 0, 0, 0.501961 )
+margin_left = -96.0
+margin_top = -1256.0
+margin_right = -32.0
+margin_bottom = 1536.0
 texture = ExtResource( 17 )
 stretch_mode = 2
 script = ExtResource( 18 )

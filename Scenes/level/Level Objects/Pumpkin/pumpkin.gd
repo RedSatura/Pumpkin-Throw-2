@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const gravity = 250
+var gravity = 250
 
 export var bounce_divider = 1.2
 
@@ -91,8 +91,13 @@ func _on_FallCooldown_timeout():
 	fall_enabled = true
 	LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
-func _on_AreaDetector_area_entered(_area):
-	velocity /= 2.5
+func _on_AreaDetector_area_entered(area):
+	print(area.get_collision_layer())
+	match area.get_collision_layer():
+		4:
+			velocity /= 2.5
+		8:
+			gravity = -400
 	
 func save_data():
 	SaveManager.game_data.current.money += calculate_money()
@@ -139,3 +144,10 @@ func check_achievements():
 	if distance_in_meters >= 42195:
 		SaveManager.game_data.achievements["marathon_thrown"] = true
 		SaveManager.save_data()
+
+func _on_AreaDetector_area_exited(area):
+	match area.get_collision_layer():
+		4:
+			pass
+		8:
+			gravity = 250

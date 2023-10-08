@@ -30,7 +30,7 @@ one_shot = true
 [node name="AreaDetector" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 4
+collision_mask = 12
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
@@ -39,3 +39,4 @@ shape = SubResource( 2 )
 [connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]
 [connection signal="timeout" from="FallCooldown" to="." method="_on_FallCooldown_timeout"]
 [connection signal="area_entered" from="AreaDetector" to="." method="_on_AreaDetector_area_entered"]
+[connection signal="area_exited" from="AreaDetector" to="." method="_on_AreaDetector_area_exited"]

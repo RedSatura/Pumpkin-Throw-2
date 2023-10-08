@@ -2,6 +2,7 @@ extends TextureButton
 
 onready var polygon_2d = $Polygon2D
 onready var time_left_label = $TimeLeft
+onready var input_label = $InputLabel
 
 func _ready():
 # warning-ignore:return_value_discarded
@@ -10,6 +11,7 @@ func _ready():
 	LevelEventBus.connect("show_level_uis", self, "show_mode")
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("check_dash_time_left", self, "update_time_left_label")
+	input_label.text = OS.get_scancode_string(OptionsData.load_file("Inputs", "Dash", 88))
 	self.visible = false
 	polygon_2d.color = Color(0.86, 0.08, 0.24, 1)
 
