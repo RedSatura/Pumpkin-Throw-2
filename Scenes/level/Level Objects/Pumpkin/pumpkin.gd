@@ -57,8 +57,8 @@ func _physics_process(delta):
 		if game_status:
 			end_game(true)
 
-	if self.global_position.y < -1000:
-		velocity.y = move_toward(velocity.y, 0, 1)
+	if self.global_position.y < -1000 && velocity.y < 0:
+		velocity.y = move_toward(velocity.y, 0, 5)
 	
 	if self.global_position.x < 0:
 		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
@@ -92,12 +92,11 @@ func _on_FallCooldown_timeout():
 	LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _on_AreaDetector_area_entered(area):
-	print(area.get_collision_layer())
 	match area.get_collision_layer():
 		4:
 			velocity /= 2.5
 		8:
-			gravity = -400
+			gravity = -1250
 	
 func save_data():
 	SaveManager.game_data.current.money += calculate_money()
@@ -108,7 +107,7 @@ func save_data():
 	SaveManager.save_data()
 
 func convert_distance_to_meters(dist):
-	return round((dist - 96) / 250)
+	return floor((dist - 96) / 250)
 
 func calculate_money():
 	return convert_distance_to_meters(self.global_position.x * 0.75)
