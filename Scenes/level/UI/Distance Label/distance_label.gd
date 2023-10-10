@@ -12,3 +12,4 @@ func update_label(distance):
 	
 func show_mode(status):
 	set_visible(status)
+

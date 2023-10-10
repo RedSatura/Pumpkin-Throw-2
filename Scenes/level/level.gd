@@ -12,10 +12,10 @@ func _ready():
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_pumpkin_position", self, "update_camera_position")
 # warning-ignore:return_value_discarded
-	LevelEventBus.connect("get_current_pumpkin_distance", self, "spawn_bouncepad")
+	LevelEventBus.connect("get_pumpkin_position", self, "spawn_bouncepad")
 # warning-ignore:return_value_discarded
-	LevelEventBus.connect("get_current_pumpkin_distance", self, "spawn_mud")
-	LevelEventBus.connect("get_current_pumpkin_distance", self, "spawn_updraft")
+	LevelEventBus.connect("get_pumpkin_position", self, "spawn_mud")
+	LevelEventBus.connect("get_pumpkin_position", self, "spawn_updraft")
 	for x in bouncepad_number:
 		create_bouncepad(x)
 	for x in mud_number:
@@ -44,7 +44,7 @@ func create_bouncepad(times_created):
 	add_child(bouncepad)
 
 func spawn_bouncepad(pos):
-	if pos > convert_distance_to_meters(bouncepad_number * 10 - 10):
+	if pos.x > bouncepad_number * 750 - 2000:
 		create_bouncepad(bouncepad_number)
 		bouncepad_number += 1
 		
@@ -54,8 +54,7 @@ func create_mud(times_created):
 	add_child(mud)
 		
 func spawn_mud(pos):
-	print(pos)
-	if pos > convert_distance_to_meters(mud_number * 10 - 10):
+	if pos.x > mud_number * 1250 - 2000:
 		create_mud(mud_number)
 		mud_number += 1
 		
@@ -65,9 +64,8 @@ func create_updraft(times_created):
 	add_child(updraft)
 		
 func spawn_updraft(pos):
-	if pos > convert_distance_to_meters(updraft_number * 10):
+	if pos.x > updraft_number * 2000 - 2000:
 		create_updraft(updraft_number)
 		updraft_number += 1
-
 func convert_distance_to_meters(dist):
 	return floor((dist - 96) / 250)
