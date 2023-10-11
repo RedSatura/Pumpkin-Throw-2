@@ -28,6 +28,9 @@ var default_game_data = {
 		"500m_thrown": false,
 		"1km_thrown": false,
 		"marathon_thrown": false,
+		
+		"invisible_kilometer": false,
+		"10000_money": false,
 	},
 }
 

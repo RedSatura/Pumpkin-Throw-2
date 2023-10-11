@@ -80,7 +80,7 @@ func _unhandled_input(_event):
 		velocity.y += 500
 		fall_times += 1
 		fall_enabled = false
-		fall_cooldown.start(3 + (fall_times * 0.15))
+		fall_cooldown.start(2 + (fall_times * 0.15))
 		LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
 
 func _on_DashCooldown_timeout():
@@ -131,6 +131,7 @@ func update_pumpkin_texture(path):
 	
 func check_achievements():
 	#don't use save_data() here, i'll clean up my code later
+	#distance based achievements
 	if distance_in_meters >= 100:
 		SaveManager.game_data.achievements["100m_thrown"] = true
 		SaveManager.save_data()
@@ -140,10 +141,17 @@ func check_achievements():
 	if distance_in_meters >= 1000:
 		SaveManager.game_data.achievements["1km_thrown"] = true
 		SaveManager.save_data()
+		if SaveManager.game_data.current.pumpkin_texture_path == "invisible_pumpkin":
+			SaveManager.game_data.achievements["invisible_kilometer"] = true
+			SaveManager.save_data()
 	if distance_in_meters >= 42195:
 		SaveManager.game_data.achievements["marathon_thrown"] = true
 		SaveManager.save_data()
-
+		
+	if SaveManager.game_data.statistics.total_money >= 10000:
+		SaveManager.game_data.achievements["10000_money"] = true
+		SaveManager.save_data()
+		
 func _on_AreaDetector_area_exited(area):
 	match area.get_collision_layer():
 		4:

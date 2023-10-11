@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Level/Level Objects/Updraft/updraft.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 128, 256 )
+extents = Vector2( 256, 256 )
 
 [node name="Updraft" type="Area2D"]
 collision_layer = 8
@@ -17,6 +17,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.501961 )
-position = Vector2( -3.8147e-06, -7.62939e-06 )
-scale = Vector2( 4, 8 )
+position = Vector2( -1.14441e-05, -7.62939e-06 )
+scale = Vector2( 8, 8 )
 texture = ExtResource( 1 )
