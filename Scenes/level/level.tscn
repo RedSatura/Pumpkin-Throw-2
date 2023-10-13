@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Scenes/Level/UI/best_distance_bar.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/Level/UI/GameOverScreen/game_over_money.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/Level/UI/Tutorial/tutorial_label.gd" type="Script" id=20]
+[ext_resource path="res://Scenes/Level/background.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.5, 32 )
@@ -241,6 +242,23 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="CanvasLayer/Tutorial/TutorialLabel"]
 one_shot = true
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+modulate = Color( 0.0156863, 0.376471, 0.568627, 1 )
+position = Vector2( 512, 304 )
+texture = ExtResource( 21 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 512, 568 )
+scale = Vector2( 48, 1 )
+z_index = -2
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 30, 64 )
+
 [node name="Cannon" type="Polygon2D" parent="."]
 position = Vector2( 64, 512 )
 color = Color( 0, 0, 0, 1 )
@@ -276,18 +294,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 scale = Vector2( 0.0208333, 1 )
 shape = SubResource( 1 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1024, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 512, 568 )
-scale = Vector2( 48, 1 )
-z_index = -2
-texture = ExtResource( 11 )
-region_rect = Rect2( 0, 0, 30, 64 )
 
 [node name="BestDistanceBar" type="TextureRect" parent="."]
 self_modulate = Color( 0, 0, 0, 0.501961 )
