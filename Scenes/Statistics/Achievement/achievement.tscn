@@ -1,11 +1,28 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Statistics/Achievement/achievement.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec4 achieved_color = vec4(1.0, 0.843, 0.0, 1.0);
+
+void fragment() {
+	vec4 pixel_color = texture(TEXTURE, UV);
+	float brightness = (pixel_color.r + pixel_color. b + pixel_color.g) / 3.0;
+	vec4 grayscale = vec4(brightness, brightness, brightness, pixel_color.a);
+	COLOR = grayscale * achieved_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/achieved_color = Plane( 1, 0.843, 0, 1 )
 
 [node name="Achievement" type="VBoxContainer"]
 margin_right = 128.0
 margin_bottom = 160.0
-custom_constants/separation = 0
+custom_constants/separation = 5
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -13,18 +30,21 @@ __meta__ = {
 achievement_texture = "res://icon.png"
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 4 )
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 1 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="."]
-margin_top = 128.0
+margin_top = 133.0
 margin_right = 128.0
-margin_bottom = 160.0
+margin_bottom = 165.0
 rect_min_size = Vector2( 0, 32 )
 align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

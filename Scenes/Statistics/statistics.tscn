@@ -99,7 +99,7 @@ margin_top = 8.0
 margin_right = 636.0
 margin_bottom = 424.0
 custom_constants/vseparation = 0
-custom_constants/hseparation = 0
+custom_constants/hseparation = 5
 columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
@@ -111,22 +111,22 @@ achievement_title = "100m Distance"
 achievement_description = "Throw your pumpkin 100 meters!"
 
 [node name="Achievement3" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
-margin_left = 128.0
-margin_right = 256.0
+margin_left = 133.0
+margin_right = 261.0
 save_achievement_title = "500m_thrown"
 achievement_title = "500m Distance"
 achievement_description = "Throw your pumpkin 500 meters!"
 
 [node name="Achievement4" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
-margin_left = 256.0
-margin_right = 384.0
+margin_left = 266.0
+margin_right = 394.0
 save_achievement_title = "1km_thrown"
 achievement_title = "1km Distance"
 achievement_description = "Throw your pumpkin one kilometer!"
 
 [node name="Achievement5" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
-margin_left = 384.0
-margin_right = 512.0
+margin_left = 399.0
+margin_right = 527.0
 save_achievement_title = "marathon_thrown"
 achievement_title = "Marathon"
 achievement_description = "Throw your pumpkin as far as the length of a typical marathon (42.195 kilometers).
@@ -141,9 +141,9 @@ achievement_description = "Throw your pumpkin a kilometer while using the invisi
 What is wrong with you?"
 
 [node name="Achievement6" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
-margin_left = 128.0
+margin_left = 133.0
 margin_top = 160.0
-margin_right = 256.0
+margin_right = 261.0
 margin_bottom = 320.0
 save_achievement_title = "10000_money"
 achievement_title = "Quite Rich"
@@ -152,7 +152,6 @@ I have no idea how you've managed to do this.
 People just like watching pumpkins getting thrown, I guess?"
 
 [node name="AchievementDisplay" type="VBoxContainer" parent="Control/Panel/TabContainer/Achievements"]
-self_modulate = Color( 1, 1, 0, 0.501961 )
 margin_left = 652.0
 margin_top = 8.0
 margin_right = 908.0

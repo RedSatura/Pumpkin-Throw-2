@@ -15,6 +15,7 @@ func _ready():
 	LevelEventBus.connect("get_pumpkin_position", self, "spawn_bouncepad")
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_pumpkin_position", self, "spawn_mud")
+# warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_pumpkin_position", self, "spawn_updraft")
 	for x in bouncepad_number:
 		create_bouncepad(x)

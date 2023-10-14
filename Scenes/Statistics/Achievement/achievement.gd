@@ -11,10 +11,11 @@ onready var label = $Label
 func _ready():
 	texture_rect.texture = load(achievement_texture)
 	label.text = achievement_title
-	if SaveManager.game_data["achievements"][save_achievement_title]:
-		texture_rect.self_modulate = Color(1, 1, 0, 1)
-	else:
-		texture_rect.self_modulate = Color(1, 1, 1, 1)
+	if SaveManager.game_data.achievements.has(save_achievement_title):
+		if SaveManager.game_data.achievements[save_achievement_title]:
+			texture_rect.material.set_shader_param("achieved_color", Color(1.0, 0.843, 0.0, 1.0))
+		else:
+			texture_rect.material.set_shader_param("achieved_color", Color(1.0, 1.0, 1.0, 1.0))
 
 func _on_Achievement_gui_input(event):
 	if event is InputEventMouseButton:
