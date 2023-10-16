@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Title Screen/Title Screen Button/title_sceen_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Statistics/best_distance.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Statistics/total_money.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Statistics/Achievement/achievement.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Statistics/Achievement/achieved_shader.tres" type="Shader" id=5]
 [ext_resource path="res://Scenes/Statistics/achievement_display.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Statistics/total_distance.gd" type="Script" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/achieved_color = Plane( 1, 0.843, 0, 1 )
 
 [node name="Statistics" type="Node2D"]
 
@@ -45,6 +51,7 @@ __meta__ = {
 }
 
 [node name="Statistics" type="Tabs" parent="Control/Panel/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -72,17 +79,25 @@ text = "Best Distance: 0 m"
 valign = 1
 script = ExtResource( 2 )
 
-[node name="TotalMoney" type="Label" parent="Control/Panel/TabContainer/Statistics/VBoxContainer"]
+[node name="TotalDistance" type="Label" parent="Control/Panel/TabContainer/Statistics/VBoxContainer"]
 margin_top = 32.0
 margin_right = 864.0
 margin_bottom = 64.0
+rect_min_size = Vector2( 0, 32 )
+text = "Total Distance: 0 m"
+valign = 1
+script = ExtResource( 7 )
+
+[node name="TotalMoney" type="Label" parent="Control/Panel/TabContainer/Statistics/VBoxContainer"]
+margin_top = 64.0
+margin_right = 864.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 0, 32 )
 text = "Total Money: $0"
 valign = 1
 script = ExtResource( 3 )
 
 [node name="Achievements" type="Tabs" parent="Control/Panel/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -106,6 +121,7 @@ __meta__ = {
 }
 
 [node name="Achievement2" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
+margin_bottom = 165.0
 save_achievement_title = "100m_thrown"
 achievement_title = "100m Distance"
 achievement_description = "Throw your pumpkin 100 meters!"
@@ -113,6 +129,7 @@ achievement_description = "Throw your pumpkin 100 meters!"
 [node name="Achievement3" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
 margin_left = 133.0
 margin_right = 261.0
+margin_bottom = 165.0
 save_achievement_title = "500m_thrown"
 achievement_title = "500m Distance"
 achievement_description = "Throw your pumpkin 500 meters!"
@@ -120,6 +137,7 @@ achievement_description = "Throw your pumpkin 500 meters!"
 [node name="Achievement4" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
 margin_left = 266.0
 margin_right = 394.0
+margin_bottom = 165.0
 save_achievement_title = "1km_thrown"
 achievement_title = "1km Distance"
 achievement_description = "Throw your pumpkin one kilometer!"
@@ -127,14 +145,14 @@ achievement_description = "Throw your pumpkin one kilometer!"
 [node name="Achievement5" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
 margin_left = 399.0
 margin_right = 527.0
+margin_bottom = 165.0
 save_achievement_title = "marathon_thrown"
 achievement_title = "Marathon"
-achievement_description = "Throw your pumpkin as far as the length of a typical marathon (42.195 kilometers).
-It's not easy!"
+achievement_description = "Throw your pumpkin 42.195 kilometers in total."
 
 [node name="Achievement" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
-margin_top = 160.0
-margin_bottom = 320.0
+margin_top = 165.0
+margin_bottom = 330.0
 save_achievement_title = "invisible_kilometer"
 achievement_title = "An Invisible Kilometer"
 achievement_description = "Throw your pumpkin a kilometer while using the invisible pumpkin.
@@ -142,9 +160,9 @@ What is wrong with you?"
 
 [node name="Achievement6" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
 margin_left = 133.0
-margin_top = 160.0
+margin_top = 165.0
 margin_right = 261.0
-margin_bottom = 320.0
+margin_bottom = 330.0
 save_achievement_title = "10000_money"
 achievement_title = "Quite Rich"
 achievement_description = "Earn a total of $10,000 from throwing pumpkins.
@@ -164,6 +182,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Control/Panel/TabContainer/Achievements/AchievementDisplay"]
+material = SubResource( 1 )
 margin_right = 256.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 256, 256 )

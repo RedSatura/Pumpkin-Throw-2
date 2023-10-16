@@ -221,7 +221,6 @@ one_shot = true
 position = Vector2( 544, 504 )
 
 [node name="Tutorial" type="Control" parent="CanvasLayer"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {

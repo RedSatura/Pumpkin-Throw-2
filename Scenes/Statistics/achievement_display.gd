@@ -12,9 +12,9 @@ func _ready():
 	
 func update_display(tex, ach_name, ach_desc, ach_save_title):
 	if SaveManager.game_data["achievements"][ach_save_title]:
-		texture_rect.self_modulate = Color(1, 1, 0, 1)
+		texture_rect.material.set_shader_param("achieved_color", Color(1.0, 0.843, 0.0, 1.0))
 	else:
-		texture_rect.self_modulate = Color(1, 1, 1, 1)
+		texture_rect.material.set_shader_param("achieved_color", Color(1.0, 1.0, 1.0, 1.0))
 	texture_rect.texture = load(tex)
 	name_label.text = ach_name
 	description_label.text = ach_desc

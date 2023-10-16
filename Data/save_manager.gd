@@ -6,6 +6,7 @@ var default_game_data = {
 	"statistics" : {
 		"best_distance": 0,
 		"best_actual_distance": 0,
+		"total_distance": 0,
 		"total_money": 0,
 	},
 	"current" : {
