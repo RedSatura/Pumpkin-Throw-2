@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Scenes/Level/UI/GameOverScreen/game_over_money.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/Level/UI/Tutorial/tutorial_label.gd" type="Script" id=20]
 [ext_resource path="res://Scenes/Level/background.png" type="Texture" id=21]
+[ext_resource path="res://Scenes/Level/clouds.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.5, 32 )
@@ -221,6 +222,7 @@ one_shot = true
 position = Vector2( 544, 504 )
 
 [node name="Tutorial" type="Control" parent="CanvasLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -251,12 +253,36 @@ texture = ExtResource( 21 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 1024, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 512, 568 )
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 0, 568 )
 scale = Vector2( 48, 1 )
 z_index = -2
 texture = ExtResource( 11 )
-region_rect = Rect2( 0, 0, 30, 64 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 3072, 0 )
+
+[node name="Clouds" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 0, -1000 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 3072, 0 )
+
+[node name="Clouds" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 1024, -1000 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 3072, 0 )
+
+[node name="Clouds" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 2048, -1000 )
+texture = ExtResource( 22 )
+centered = false
 
 [node name="Cannon" type="Polygon2D" parent="."]
 position = Vector2( 64, 512 )
