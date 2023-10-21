@@ -46,6 +46,20 @@ func _physics_process(delta):
 		self.rotation_degrees += rand_rotation_value
 		if collision:
 			velocity = velocity.bounce(collision.normal) / bounce_divider
+			
+		if self.global_position.y < -1000 && velocity.y < 0:
+			velocity.y = move_toward(velocity.y, 0, 5)
+			
+		if self.global_position.y < -1000:
+			velocity.x += 1
+		
+		if self.global_position.x < 0:
+			LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
+			LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
+			if velocity.x < 0:
+				velocity.x += 1
+			dash_enabled = false
+			fall_enabled = false
 	else:
 		pass
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", distance_in_meters * 1)
@@ -56,17 +70,6 @@ func _physics_process(delta):
 	if velocity.length() < 2.2:
 		if game_status:
 			end_game(true)
-
-	if self.global_position.y < -1000 && velocity.y < 0:
-		velocity.y = move_toward(velocity.y, 0, 5)
-	
-	if self.global_position.x < 0:
-		LevelEventBus.emit_signal("check_dash_cooldown", dash_enabled)
-		LevelEventBus.emit_signal("check_fall_cooldown", fall_enabled)
-		if velocity.x < 0:
-			velocity.x += 1
-		dash_enabled = false
-		fall_enabled = false
 		
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("dash") && dash_enabled:

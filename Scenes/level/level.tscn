@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Level/Level Objects/Cannon/cannon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/level.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Scenes/Level/UI/Tutorial/tutorial_label.gd" type="Script" id=20]
 [ext_resource path="res://Scenes/Level/background.png" type="Texture" id=21]
 [ext_resource path="res://Scenes/Level/clouds.png" type="Texture" id=22]
+[ext_resource path="res://Scenes/Level/sky.gd" type="Script" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.5, 32 )
@@ -245,17 +246,18 @@ one_shot = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
-modulate = Color( 0.0156863, 0.376471, 0.568627, 1 )
+[node name="Sky" type="Sprite" parent="ParallaxBackground"]
+self_modulate = Color( 0, 0.392157, 0.568627, 1 )
 position = Vector2( 512, 304 )
 texture = ExtResource( 21 )
+script = ExtResource( 23 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 1024, 0 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 0, 568 )
-scale = Vector2( 48, 1 )
+position = Vector2( 0, 552 )
+scale = Vector2( 4, 1.25 )
 z_index = -2
 texture = ExtResource( 11 )
 centered = false

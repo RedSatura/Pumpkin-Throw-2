@@ -68,5 +68,6 @@ func spawn_updraft(pos):
 	if pos.x > updraft_number * 2000 - 2000:
 		create_updraft(updraft_number)
 		updraft_number += 1
+		
 func convert_distance_to_meters(dist):
 	return floor((dist - 96) / 250)
