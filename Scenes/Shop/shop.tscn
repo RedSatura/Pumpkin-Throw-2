@@ -117,12 +117,13 @@ margin_left = 48.0
 margin_top = 124.0
 margin_right = -352.0
 margin_bottom = -48.0
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
-margin_right = 392.0
+margin_right = 656.0
 margin_bottom = 164.0
 columns = 5
 
@@ -130,33 +131,58 @@ columns = 5
 title = "Default Pumpkin"
 description = "Cost: Free
 
-The default item."
-image_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
-pumpkin_texture_path = "res://Scenes/Shop/Textures/test_pumpkin_texture.png"
+The default pumpkin."
+image_path = "res://Scenes/Shop/Textures/default_pumpkin.png"
+pumpkin_texture_path = "res://Scenes/Shop/Textures/default_pumpkin.png"
 item_name = "default_pumpkin"
 
 [node name="ShopItem2" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 132.0
 margin_right = 260.0
-cost = 20
-title = "icon.png"
-description = "Cost: $20
+cost = 100
+title = "Square Pumpkin"
+description = "Cost: $100
 
-Throw the Godot Engine logo around!"
-image_path = "res://icon.png"
-pumpkin_texture_path = "res://icon.png"
-item_name = "icon.png"
+A square pumpkin."
+image_path = "res://Scenes/Shop/Textures/square_pumpkin.png"
+pumpkin_texture_path = "res://Scenes/Shop/Textures/square_pumpkin.png"
+item_name = "square_pumpkin"
 
-[node name="ShopItem4" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="ShopItem3" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
 margin_left = 264.0
 margin_right = 392.0
-cost = 100
-title = "Nothing"
-description = "Cost: $100
+cost = 500
+title = "Jack-o-Lantern"
+description = "Cost: $500
+
+Pumpkin with carvings on it."
+image_path = "res://Scenes/Shop/Textures/jack_o_lantern.png"
+pumpkin_texture_path = "res://Scenes/Shop/Textures/jack_o_lantern.png"
+item_name = "jack_o_lantern"
+
+[node name="ShopItem5" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 396.0
+margin_right = 524.0
+cost = 1000
+title = "Watermelon"
+description = "Cost: $1000
+
+This is actually a pumpkin dressed as a watermelon."
+image_path = "res://Scenes/Shop/Textures/watermelon.png"
+pumpkin_texture_path = "res://Scenes/Shop/Textures/watermelon.png"
+item_name = "watermelon"
+
+[node name="ShopItem4" parent="Control/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 528.0
+margin_right = 656.0
+cost = 10000
+title = "Invisible"
+description = "Cost: $10000
 
 Literally nothing. Want an invisible pumpkin? Go ahead! Buy this to make your life harder!
 "
-pumpkin_texture_path = "invisible_pumpkin"
+image_path = "res://Scenes/Shop/Textures/invisible_pumpkin.png"
+pumpkin_texture_path = "res://Scenes/Shop/Textures/invisible_pumpkin.png"
 item_name = "invisible_pumpkin"
 
 [node name="TitleScreenButton" parent="." instance=ExtResource( 2 )]

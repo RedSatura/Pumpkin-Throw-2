@@ -16,7 +16,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("get_cannon_status", self, "update_text")
 # warning-ignore:return_value_discarded
-	LevelEventBus.connect("show_level_uis", self, "show_mode")
+#	LevelEventBus.connect("show_level_uis", self, "show_mode")
 	update_text(cannon_state)
 
 func update_text(status):
@@ -37,5 +37,5 @@ func update_text(status):
 func _on_Timer_timeout():
 	self.visible = false
 	
-func show_mode(status):
-	set_visible(status)
+#func show_mode(status):
+#	set_visible(status)

@@ -249,6 +249,9 @@ margin_bottom = 80.0
 modulate = Color( 0.0156863, 0.376471, 0.568627, 1 )
 position = Vector2( 512, 304 )
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="pressed" from="Control/Panel/Input/VBoxContainer/HBoxContainer2/CannonFire" to="Control/Panel/Input/VBoxContainer/HBoxContainer2/CannonFire" method="_on_Fire_Cannon_pressed"]
 [connection signal="pressed" from="Control/Panel/Input/VBoxContainer/HBoxContainer2/Dash" to="Control/Panel/Input/VBoxContainer/HBoxContainer2/Dash" method="_on_Dash_pressed"]

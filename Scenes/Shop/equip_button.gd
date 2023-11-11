@@ -22,11 +22,8 @@ func update_equip_button(path, cost, i_name, _milestone_number):
 	item_name = i_name
 	
 	if !ResourceLoader.exists(path):
-		if path == "invisible_pumpkin":	
-			button_equip_status(path, cost, i_name)
-		else:
-			set_disabled(true)
-			self.set_text("File doesn't exist!")
+		set_disabled(true)
+		self.set_text("File doesn't exist!")
 	else:
 		button_equip_status(path, cost, i_name)
 

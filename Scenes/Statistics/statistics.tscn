@@ -123,6 +123,7 @@ __meta__ = {
 
 [node name="Achievement2" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
 margin_bottom = 165.0
+achievement_texture = "res://Scenes/Statistics/Achievement/Textures/100_meters_achievement.png"
 save_achievement_title = "100m_thrown"
 achievement_title = "100m Distance"
 achievement_description = "Throw your pumpkin 100 meters!"
@@ -131,6 +132,7 @@ achievement_description = "Throw your pumpkin 100 meters!"
 margin_left = 133.0
 margin_right = 261.0
 margin_bottom = 165.0
+achievement_texture = "res://Scenes/Statistics/Achievement/Textures/500_meters_achievement.png"
 save_achievement_title = "500m_thrown"
 achievement_title = "500m Distance"
 achievement_description = "Throw your pumpkin 500 meters!"
@@ -139,6 +141,7 @@ achievement_description = "Throw your pumpkin 500 meters!"
 margin_left = 266.0
 margin_right = 394.0
 margin_bottom = 165.0
+achievement_texture = "res://Scenes/Statistics/Achievement/Textures/1000_meters_achievement.png"
 save_achievement_title = "1km_thrown"
 achievement_title = "1km Distance"
 achievement_description = "Throw your pumpkin one kilometer!"
@@ -147,6 +150,7 @@ achievement_description = "Throw your pumpkin one kilometer!"
 margin_left = 399.0
 margin_right = 527.0
 margin_bottom = 165.0
+achievement_texture = "res://Scenes/Statistics/Achievement/Textures/marathon_achievement.png"
 save_achievement_title = "marathon_thrown"
 achievement_title = "Marathon"
 achievement_description = "Throw your pumpkin 42.195 kilometers in total."
@@ -154,6 +158,7 @@ achievement_description = "Throw your pumpkin 42.195 kilometers in total."
 [node name="Achievement" parent="Control/Panel/TabContainer/Achievements/GridContainer" instance=ExtResource( 4 )]
 margin_top = 165.0
 margin_bottom = 330.0
+achievement_texture = "res://Scenes/Statistics/Achievement/Textures/invisible_kilometer_achievement.png"
 save_achievement_title = "invisible_kilometer"
 achievement_title = "An Invisible Kilometer"
 achievement_description = "Throw your pumpkin a kilometer while using the invisible pumpkin.
@@ -164,9 +169,10 @@ margin_left = 133.0
 margin_top = 165.0
 margin_right = 261.0
 margin_bottom = 330.0
-save_achievement_title = "10000_money"
+achievement_texture = "res://Scenes/Statistics/Achievement/Textures/money_achievement_1.png"
+save_achievement_title = "100000_money"
 achievement_title = "Quite Rich"
-achievement_description = "Earn a total of $10,000 from throwing pumpkins.
+achievement_description = "Earn a total of $100,000 from throwing pumpkins.
 I have no idea how you've managed to do this.
 People just like watching pumpkins getting thrown, I guess?"
 

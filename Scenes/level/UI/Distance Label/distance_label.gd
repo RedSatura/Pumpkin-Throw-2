@@ -6,12 +6,13 @@ func _ready():
 # warning-ignore:return_value_discarded
 	LevelEventBus.connect("show_level_uis", self, "show_mode")
 	self.text = "Distance: 0 meters"
+	self.visible = false
 	
 func update_label(distance):
 	self.text = "Distance: "
 	if distance >= 1000:
 		var km_distance: float = distance / 1000
-		self.text += str(stepify(km_distance, 0.001)) + " kilometers"
+		self.text += str("%3.2f" % stepify(km_distance, 0.001)) + " kilometers"
 	else:
 		self.text += str(distance) + " meters"
 	

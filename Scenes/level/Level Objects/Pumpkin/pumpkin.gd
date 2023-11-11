@@ -64,6 +64,7 @@ func _physics_process(delta):
 		pass
 	LevelEventBus.emit_signal("get_current_pumpkin_distance", distance_in_meters * 1)
 	LevelEventBus.emit_signal("get_pumpkin_position", self.global_position * 1)
+	LevelEventBus.emit_signal("get_pumpkin_velocity", self.velocity)
 	LevelEventBus.emit_signal("check_dash_time_left", stepify(dash_cooldown.time_left, 0.1))
 	LevelEventBus.emit_signal("check_fall_time_left", stepify(fall_cooldown.time_left, 0.1))
 	
@@ -105,11 +106,11 @@ func save_data():
 	SaveManager.game_data.current.money += calculate_money()
 	SaveManager.game_data.statistics.total_money += calculate_money()
 	SaveManager.game_data.statistics.total_distance += distance_in_meters
-	if self.global_position.x > SaveManager.game_data.statistics.best_distance:
+	if self.global_position.x > SaveManager.game_data.statistics.best_actual_distance:
 		SaveManager.game_data.statistics.best_distance = distance_in_meters
 		SaveManager.game_data.statistics.best_actual_distance = self.global_position.x
 	SaveManager.save_data()
-
+	
 func convert_distance_to_meters(dist):
 	return floor((dist - 96) / 250)
 
@@ -152,8 +153,8 @@ func check_achievements():
 	if SaveManager.game_data.statistics.total_distance >= 42195:
 		SaveManager.game_data.achievements["marathon_thrown"] = true
 		SaveManager.save_data()
-	if SaveManager.game_data.statistics.total_money >= 10000:
-		SaveManager.game_data.achievements["10000_money"] = true
+	if SaveManager.game_data.statistics.total_money >= 100000:
+		SaveManager.game_data.achievements["100000_money"] = true
 		SaveManager.save_data()
 		
 func _on_AreaDetector_area_exited(area):

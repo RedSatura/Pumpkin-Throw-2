@@ -12,11 +12,13 @@ var default_game_data = {
 	"current" : {
 		"money": 0,
 		
-		"pumpkin_texture_path": "res://Scenes/Shop/Textures/test_pumpkin_texture.png",
+		"pumpkin_texture_path": "res://Scenes/Shop/Textures/default_pumpkin.png",
 	},
 	"equipped" : {
 		"default_pumpkin": true,
-		"icon.png": false,
+		"square_pumpkin": false,
+		"jack_o_lantern": false,
+		"watermelon": false,
 		"invisible_pumpkin": false,
 	},
 	"special": {
@@ -31,7 +33,7 @@ var default_game_data = {
 		"marathon_thrown": false,
 		
 		"invisible_kilometer": false,
-		"10000_money": false,
+		"100000_money": false,
 	},
 }
 

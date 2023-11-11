@@ -14,6 +14,8 @@ signal get_pumpkin_position
 # warning-ignore:unused_signal
 signal get_current_pumpkin_distance
 # warning-ignore:unused_signal
+signal get_pumpkin_velocity
+# warning-ignore:unused_signal
 signal check_dash_cooldown
 # warning-ignore:unused_signal
 signal check_fall_cooldown
